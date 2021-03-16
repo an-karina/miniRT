@@ -6,13 +6,20 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/16 17:24:24 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/16 18:07:07 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_struct.h"
 
-t_wind		fill_wind(float height, float width)
+t_vec		normilize(t_vec vec)
+{
+	double	module;
+
+	module = sqrt();
+}
+
+t_wind		fill_wind(double height, double width)
 {
 	t_wind window;
 
@@ -21,7 +28,7 @@ t_wind		fill_wind(float height, float width)
 	return (window);
 }
 
-t_vec		fill_vector(float x, float y, float z)
+t_vec		fill_vector(double x, double y, double z)
 {
 	t_vec vec;
 
@@ -31,7 +38,7 @@ t_vec		fill_vector(float x, float y, float z)
 	return (vec);
 }
 
-t_point		fill_point(float x, float y, float z)
+t_point		fill_point(double x, double y, double z)
 {
 	t_point vec;
 
@@ -41,7 +48,7 @@ t_point		fill_point(float x, float y, float z)
 	return (vec);
 }
 
-t_camera	fill_camera(t_point p_view, t_vec view, float fov, t_wind window)
+t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window)
 {
 	t_camera camera;
 
