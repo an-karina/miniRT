@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_func.h                                      :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 16:42:11 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/16 18:06:28 by jhleena          ###   ########.fr       */
+/*   Created: 2021/03/17 19:21:17 by jhleena           #+#    #+#             */
+/*   Updated: 2021/03/17 20:17:29 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_FUNC_H
-# define HEADER_FUNC_H
+#ifndef VECTOR_H
+# define VECTOR_H
 
 # include "header_struct.h"
 
-t_wind		fill_wind(double height, double width);
-t_vec		fill_vector(double x, double y, double z);
-t_point		fill_point(double x, double y, double z);
-t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window);
+t_vec	vec_add(t_vec u, t_vec v);
+t_vec	vec_sub(t_vec u, t_vec v);
+t_vec	vec_mul(t_vec u, double t);
+double	vec_dot(t_vec u, t_vec v);
+t_vec	vec_cross(t_vec u, t_vec v);
 
 #endif

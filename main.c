@@ -1,5 +1,6 @@
-#include "header_struct.h"
-#include "header_func.h"
+#include "includes/header_struct.h"
+#include "includes/header_func.h"
+#include "includes/vector.h"
 
 int 			main()
 {

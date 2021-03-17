@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/16 18:06:34 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/17 19:31:43 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ enum			e_figure
 
 typedef struct	s_window
 {
-	double	height;
-	double	width;
+	int			height;
+	int			width;
 }				t_wind;
 
 
@@ -48,9 +48,9 @@ typedef struct		s_point
 
 typedef	struct		s_color
 {
-	double			r;
-	double			g;
-	double			b;
+	int				r;
+	int				g;
+	int				b;
 }					t_color;
 
 typedef struct		s_ray
@@ -72,10 +72,10 @@ typedef struct		s_camera
 	double			fov;
 	t_vec			view;
 	double			distance;
-	t_bais			camera_base;
+	t_bais			base;
 }					t_camera;
 
-typedef struct		s_figure
+typedef struct		s_object
 {
 	double			s_diameter;
 	t_vec			normal;
@@ -88,6 +88,6 @@ typedef struct		s_figure
 	t_color			color;
 	t_camera		camera;
 	enum e_figure	id;
-}					t_figure;
+}					t_object;
 
 #endif
