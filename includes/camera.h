@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header_func.h                                      :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 16:42:11 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/17 19:20:27 by jhleena          ###   ########.fr       */
+/*   Created: 2021/03/18 16:14:47 by jhleena           #+#    #+#             */
+/*   Updated: 2021/03/18 16:17:17 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_FUNC_H
-# define HEADER_FUNC_H
+#ifndef CAMERA_H
+# define CAMERA_H
 
 # include "header_struct.h"
+# include "vector.h"
 
-t_wind		fill_wind(double height, double width);
-t_vec		fill_vector(double x, double y, double z);
-t_point		fill_point(double x, double y, double z);
-t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window);
+typedef struct		s_basis
+{
+	t_vec			i;
+	t_vec			j;
+	t_vec			k;
+}					t_bais;
+
+typedef struct		s_camera
+{
+	t_point			position;
+	double			fov;
+	t_vec			view;
+	double			distance;
+	t_bais			base;
+}					t_camera;
 
 #endif
