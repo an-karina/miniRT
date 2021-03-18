@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:14:47 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 16:17:17 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:03:24 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@
 # include "header_struct.h"
 # include "vector.h"
 
-typedef struct		s_basis
-{
-	t_vec			i;
-	t_vec			j;
-	t_vec			k;
-}					t_bais;
-
 typedef struct		s_camera
 {
 	t_point			position;
 	double			fov;
 	t_vec			view;
 	double			distance;
-	t_bais			base;
+	t_matrix		base;
 }					t_camera;
 
 #endif

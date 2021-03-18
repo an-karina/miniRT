@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 13:05:12 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 16:51:20 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/18 20:24:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_vec	mat_mul_vec(t_matrix m, t_vec v)
 {
 	t_vec	u;
 
-	u.x = m.x.x * v.x + m.x.y * v.y + m.x.z * v.z;
-	u.y = m.y.x * v.x + m.y.y * v.y + m.y.z * v.z;
-	u.z = m.z.x * v.x + m.z.y * v.y + m.z.z * v.z;
+	u.x = m.i.x * v.x + m.i.y * v.y + m.i.z * v.z;
+	u.y = m.j.x * v.x + m.j.y * v.y + m.j.z * v.z;
+	u.z = m.k.x * v.x + m.k.y * v.y + m.k.z * v.z;
 	return (u);
 }

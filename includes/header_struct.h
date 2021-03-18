@@ -6,16 +6,15 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 16:44:16 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:34:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_STRUCT_H
 # define HEADER_STRUCT_H
 
-# include "mlx/mlx.h"
-# include "math.h"
-# include <stdio.h>
+# include "../mlx/mlx.h"
+# include <math.h>
 
 enum			e_figure
 {
@@ -25,6 +24,7 @@ enum			e_figure
 	PLANE,
 	SQUARE,
 };
+
 
 typedef struct	s_window
 {
@@ -39,6 +39,8 @@ typedef struct	s_point
 	double		z;
 }				t_point;
 
+typedef t_point t_vec;
+
 typedef	struct	s_color
 {
 	int			r;
@@ -51,5 +53,13 @@ typedef struct	s_ray
 	t_point		point;
 	t_vec		direction;
 }				t_ray;
+
+typedef struct  s_data {
+    void        *img;
+    char        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+}               t_data;
 
 #endif

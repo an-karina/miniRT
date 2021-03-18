@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:21:17 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 16:50:47 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:26:39 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 # include "header_struct.h"
 
-typedef t_point		t_vec;
-
 typedef	struct		s_matrix
 {
-	t_vec			x;
-	t_vec			y;
-	t_vec			z;
+	t_vec			i;
+	t_vec			j;
+	t_vec			k;
 }					t_matrix;
 
 t_vec				vec_add(t_vec u, t_vec v);
