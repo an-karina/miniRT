@@ -6,14 +6,15 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/19 17:42:40 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/19 19:22:06 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header_struct.h"
-#include "../includes/header_fill.h"
-#include "../includes/vector.h"
-#include "../includes/camera.h"
+#include "header_struct.h"
+#include "header_fill.h"
+#include "vector.h"
+#include "camera.h"
+#include "scene.h"
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -29,31 +30,33 @@ int				main(void)
 	t_vec		view;
 	t_point		point_of_view;
 	t_wind		window;
+	t_scene		scene;
 	void		*mlx;
     void		*mlx_win;
     t_data		img;
+	int 		color;
 	int			x;
 	int			y;
 
 
-	window = fill_wind(1920, 1080);
+	window = fill_wind(1500, 1000);
 	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
 	camera = fill_camera(point_of_view, view, (double)80, window);
 	mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-    img.img = mlx_new_image(mlx, 1920, 1080);
+    mlx_win = mlx_new_window(mlx, window.width, window.height, "Hello world!");
+    img.img = mlx_new_image(mlx,  window.width,  window.height);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
                                  &img.endian);
 	x = 0;
 	y = 0;
-	while (y < window.height)
+	while (y < window.height) 
 	{
 		x = 0;
 		while (x < window.width)
 		{
-			get_ray(x, y, camera, window);
-			my_mlx_pixel_put(&img, x, y, 0x00FF0000);
+			color = ray_trace(get_ray(x, y, camera, window), scene);
+			my_mlx_pixel_put(&img, x, y, color);
 			x++;
 		}
 		y++;
