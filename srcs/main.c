@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/19 17:17:08 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/19 17:42:40 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,17 @@ int				main(void)
                                  &img.endian);
 	x = 0;
 	y = 0;
-	// while (y < window.height)
-	// {
-	// 	while (x < window.width)
-	// 	{
-	// 		get_ray(x, y, camera, window);
-	// 		my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	// 		y++;
-	// 	}
-	// 	x++;
-	// }
+	while (y < window.height)
+	{
+		x = 0;
+		while (x < window.width)
+		{
+			get_ray(x, y, camera, window);
+			my_mlx_pixel_put(&img, x, y, 0x00FF0000);
+			x++;
+		}
+		y++;
+	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);

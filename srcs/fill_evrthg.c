@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/19 17:13:25 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/19 17:42:24 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/camera.h"
 #include "../includes/vector.h"
 
-t_wind		fill_wind(double height, double width)
+t_wind		fill_wind(double width, double height)
 {
 	t_wind window;
 
