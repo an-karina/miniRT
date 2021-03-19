@@ -1,9 +1,9 @@
 SRCS		= srcs/fill_evrthg.c srcs/get_ray.c srcs/main.c vector_math/vector_func_1.c\
-				vector_math/vector_func_2.c vector_math/vector_func_3.c
+				vector_math/vector_func_2.c vector_math/vector_func_3.c\
 
 INC			= includes/camera.h includes/header_fill.h includes/header_struct.h includes/vector.h
 
-OBJS		= $(SRCS:.c = .o)
+OBJS		= $(SRCS:.c=.o)
 
 CC			= gcc
 RM			= rm -f
