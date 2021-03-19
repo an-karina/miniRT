@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:21:17 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 21:26:39 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/19 17:12:29 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_vec				vec_div(t_vec u, double t);
 double				vec_dot(t_vec u, t_vec v);
 t_vec				vec_cross(t_vec u, t_vec v);
 t_vec				vec_norm(t_vec vec);
-t_vec				vec_lenght(t_vec vec);
-t_vec				vec_lenght_2(t_vec vec);
+double				vec_lenght(t_vec vec);
+double				vec_lenght_2(t_vec vec);
 t_vec				mat_mul_vec(t_matrix m, t_vec v);
 int					is_null_vec(t_vec v);
 
