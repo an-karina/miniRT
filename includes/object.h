@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_trace.c                                        :+:      :+:    :+:   */
+/*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/19 21:14:34 by jhleena          ###   ########.fr       */
+/*   Created: 2021/03/25 16:53:48 by jhleena           #+#    #+#             */
+/*   Updated: 2021/03/25 16:59:43 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header_struct.h"
-#include "scene.h"
+#ifndef OBJECT_H
+# define OBJECT_H
 
-int		ray_trace(t_ray ray, t_scene scene)
+#include "header_struct.h"
+
+typedef struct s_sphere
 {
-	
-	return (0x00FF0000);
-}
+	t_point center;
+	double	r;
+}				t_sphere;
+
+
+typedef struct	s_object
+{
+	t_color		color;
+	t_sphere	shape;
+}				t_object;
+
+#endif

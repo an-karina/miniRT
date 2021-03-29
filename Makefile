@@ -12,23 +12,28 @@ CFLAGS		= -I includes/ -I mlx/
 LIBS		= -L . -lmlx
 MLX			= libmlx.dylib
 NAME		= miniRT
+LIBFT		= libft.a
 
 all:		$(NAME)
 
-$(NAME):	$(MLX) $(OBJS) $(INCS)
+$(NAME):	$(LIBFT) $(MLX) $(OBJS) $(INCS)
+				@cp libft/$(LIBFT) .
 				@cp mlx/$(MLX) .
 				gcc -g ${CFLAGS} -o miniRT ${OBJS} ${LIBS}
 				@echo "Done"
 
-$(MLX):
-				@make -C mlx
+$(LIBFT):		
+				@make -C libft
 
+$(MLX):
+				@make -C mlx 
 clean:
 			$(RM) $(OBJS)
 
 fclean:		clean
-				$(RM) $(NAME) $(MLX)
+				$(RM) $(NAME) $(MLX) $(LIBFT)
 				@make clean -C mlx
+				@make clean -C libft
 
 re:			fclean $(NAME)
 
