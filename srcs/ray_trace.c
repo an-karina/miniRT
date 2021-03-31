@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/30 20:40:48 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/31 15:53:09 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,15 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 	black.g = 0;
 	black.b = 0;
 	a = vec_dot(ray.direction, ray.direction);
-	vec_oc = vec_sub((t_vec)scene.objects.shape.center, (t_vec)scene.cameras.position);
+	vec_oc = vec_sub((t_vec)scene.cameras.position, (t_vec)scene.objects.shape.center);
 	b = 2 * vec_dot(ray.direction, vec_oc);
 	c = vec_dot(vec_oc, vec_oc) - (scene.objects.shape.r * scene.objects.shape.r);
 	disc = discriminant(a, b, c);
 	if (disc < 0)
 		return (black);
-	//return (scene.objects.color);
 	t_1 = (-b + sqrt(disc))/(2 * a);
 	t_2 = (-b - sqrt(disc))/(2 * a);
 	t_1 = (t_1 >= 0 && t_1 > t_2) ? (t_1) : (t_2);
-	printf("%lf %lf\n", t_1, t_2);
 	if (t_1 > 0)
 		return (scene.objects.color);
 	else

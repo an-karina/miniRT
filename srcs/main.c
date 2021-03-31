@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/30 20:51:56 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/03/31 15:16:17 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int				main(void)
 	mlx = mlx_init();
     mlx_win = mlx_new_window(mlx, window.width, window.height, "Hello world!");
     img.img = mlx_new_image(mlx,  window.width,  window.height);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-                                 &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
 	x = 0;
 	y = 0;
 	object.shape.center = fill_point(0, 0, 10);

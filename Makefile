@@ -6,7 +6,7 @@ INC			= includes/camera.h includes/header_fill.h includes/header_struct.h includ
 
 OBJS		= $(SRCS:.c=.o)
 
-CC			= gcc -O2
+CC			= gcc -g -O2
 RM			= rm -f
 CFLAGS		= -I includes/ -I mlx/
 LIBS		= -L . -lmlx
