@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/06 16:04:08 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/06 19:10:02 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int				main(void)
 	int			x;
 	int			y;
 	t_sphere	sphere;
+	t_sphere	sphere_1;
 	t_object	object;
+	t_object	object_1;
 	t_scene		scene;
 	
 	window = fill_wind(1500, 1000);
@@ -53,8 +55,8 @@ int				main(void)
 								&img.endian);
 	x = 0;
 	y = 0;
-	sphere.center = fill_point(0, 0, 9);
-	sphere.r = 6;
+	sphere.center = fill_point(0, 0, 10);
+	sphere.r = 2;
 	object.color.r = 0;
 	object.color.g = 255;
 	object.color.b = 0;
@@ -62,17 +64,49 @@ int				main(void)
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 	
+	sphere_1.center = fill_point(0, 6, 12);
+	sphere_1.r = 3;
+	object_1.color.r = 0;
+	object_1.color.g = 255;
+	object_1.color.b = 0;
+	object_1.shape = &(sphere_1);
+	(scene.cameras)->next = ft_lstnew(&camera);
+	(scene.objects)->next = ft_lstnew(&object_1);
 	while (y < window.height) 
 	{
 		x = 0;
 		while (x < window.width)
 		{
 			color = ray_trace(get_ray(x, y, camera, window), scene);
-			my_mlx_pixel_put(&img, x, y, color.b);
+				my_mlx_pixel_put(&img, x, y, color.b);
 			x++;
 		}
 		y++;
 	}
+	x = 0;
+	y = 0;
+	// sphere.center = fill_point(0, 6, 12);
+	// sphere.r = 3;
+	// object.color.r = 0;
+	// object.color.g = 255;
+	// object.color.b = 0;
+	// object.shape = &sphere;
+	// (scene.cameras)->next = ft_lstnew(&camera);
+	// (scene.objects)->next = ft_lstnew(&object);
+	// scene.cameras = (scene.cameras)->next;
+	// scene.objects =  (scene.objects)->next;
+	// while (y < window.height) 
+	// {
+	// 	x = 0;
+	// 	while (x < window.width)
+	// 	{
+	// 		color = ray_trace(get_ray(x, y, camera, window), scene);
+	// 		if (color.b == 0)
+	// 		my_mlx_pixel_put(&img, x, y, color.b);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);
