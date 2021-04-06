@@ -1,7 +1,7 @@
 SRCS		= srcs/fill_evrthg.c srcs/get_ray.c srcs/main.c vector_math/vector_func_1.c\
 				vector_math/vector_func_2.c vector_math/vector_func_3.c srcs/ray_trace.c\
 
-INC			= includes/camera.h includes/header_fill.h includes/header_struct.h includes/vector.h\
+INC			= libft/libft.h includes/camera.h includes/header_fill.h includes/header_struct.h includes/vector.h\
 				includes/scene.h
 
 OBJS		= $(SRCS:.c=.o)
@@ -19,7 +19,7 @@ all:		$(NAME)
 $(NAME):	$(LIBFT) $(MLX) $(OBJS) $(INCS)
 				@cp libft/$(LIBFT) .
 				@cp mlx/$(MLX) .
-				gcc -g ${CFLAGS} -o miniRT ${OBJS} ${LIBS}
+				gcc -g libft.a ${CFLAGS} -o miniRT ${OBJS} ${LIBS}
 				@echo "Done"
 
 $(LIBFT):		

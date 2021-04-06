@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/31 15:16:17 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/06 16:04:08 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "camera.h"
 #include "scene.h"
 #include "object.h"
+#include "../libft/libft.h"
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -37,10 +38,10 @@ int				main(void)
 	t_color 	color;
 	int			x;
 	int			y;
-	t_scene		scene;
+	t_sphere	sphere;
 	t_object	object;
-
-
+	t_scene		scene;
+	
 	window = fill_wind(1500, 1000);
 	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
@@ -52,13 +53,15 @@ int				main(void)
 								&img.endian);
 	x = 0;
 	y = 0;
-	object.shape.center = fill_point(0, 0, 10);
-	object.shape.r = 1;
+	sphere.center = fill_point(0, 0, 9);
+	sphere.r = 6;
 	object.color.r = 0;
-	object.color.g = 0;
-	object.color.b = 255;
-	scene.objects = object;
-	scene.cameras = camera;
+	object.color.g = 255;
+	object.color.b = 0;
+	object.shape = &sphere;
+	scene.cameras = ft_lstnew(&camera);
+	scene.objects =  ft_lstnew(&object);
+	
 	while (y < window.height) 
 	{
 		x = 0;
