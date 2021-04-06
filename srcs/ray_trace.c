@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/06 19:04:02 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/06 19:16:47 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 		t_1 = solve_equation((t_camera *)((scene.cameras)->data), (t_sphere *)((t_object *)(scene.objects)->data)->shape, ray);
 		if (t_1 >= 0)
 			return (((t_object *)(scene.objects)->data)->color);
-		//else
-			//return (black);
 		scene.objects = (scene.objects)->next;
 	}
 	return (black);

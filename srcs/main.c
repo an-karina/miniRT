@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/06 19:10:02 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/06 19:34:59 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,6 @@ int				main(void)
 		}
 		y++;
 	}
-	x = 0;
-	y = 0;
-	// sphere.center = fill_point(0, 6, 12);
-	// sphere.r = 3;
-	// object.color.r = 0;
-	// object.color.g = 255;
-	// object.color.b = 0;
-	// object.shape = &sphere;
-	// (scene.cameras)->next = ft_lstnew(&camera);
-	// (scene.objects)->next = ft_lstnew(&object);
-	// scene.cameras = (scene.cameras)->next;
-	// scene.objects =  (scene.objects)->next;
-	// while (y < window.height) 
-	// {
-	// 	x = 0;
-	// 	while (x < window.width)
-	// 	{
-	// 		color = ray_trace(get_ray(x, y, camera, window), scene);
-	// 		if (color.b == 0)
-	// 		my_mlx_pixel_put(&img, x, y, color.b);
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);
