@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 13:05:12 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/30 20:51:10 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:24:45 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vec	vec_norm(t_vec vec)
 
 double	vec_lenght(t_vec vec)
 {
-	return	(sqrt(vec_dot(vec, vec)));
+	return (sqrt(vec_dot(vec, vec)));
 }
 
 double	vec_lenght_2(t_vec vec)

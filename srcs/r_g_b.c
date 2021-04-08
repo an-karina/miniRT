@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 19:22:22 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/06 19:34:17 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:25:45 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		rgb_to_int(t_color color)
 {
-	return (255 * 255 * 255 * color.r + 255 * 255 * color.g 
+	return (255 * 255 * 255 * color.r + 255 * 255 * color.g
 			+ 255 * color.b);
 }
