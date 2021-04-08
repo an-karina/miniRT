@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header_struct.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@pashalove.com>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:03:03 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:23:09 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 
 # include "../mlx/mlx.h"
 # include <math.h>
-
-enum				e_figure
-{
-	SPHERE,
-	CYLINDER,
-	TRIANGLE,
-	PLANE,
-	SQUARE,
-};
-
 
 typedef struct		s_window
 {
@@ -39,7 +29,7 @@ typedef struct		s_point
 	double			z;
 }					t_point;
 
-typedef t_point 	t_vec;
+typedef t_point		t_vec;
 
 typedef	struct		s_color
 {
@@ -54,12 +44,12 @@ typedef struct		s_ray
 	t_vec			direction;
 }					t_ray;
 
-typedef struct  	s_data {
-    void        	*img;
-    char        	*addr;
-    int         	bits_per_pixel;
-    int         	line_length;
-    int         	endian;
-}               	t_data;
+typedef struct		s_data {
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_data;
 
 #endif

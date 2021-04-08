@@ -6,21 +6,20 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:53:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/06 14:17:11 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:17:55 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
-#include "header_struct.h"
+# include "header_struct.h"
 
-typedef struct s_sphere
+typedef struct	s_sphere
 {
-	t_point center;
-	double	r;
+	t_point		center;
+	double		r;
 }				t_sphere;
-
 
 typedef struct	s_object
 {
