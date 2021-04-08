@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:54:30 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 17:18:22 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 #include "camera.h"
 #include "scene.h"
 #include "object.h"
+#include "light.h"
 #include "../libft/libft.h"
-
-double		solve_equation(t_camera *camera, t_object *object, t_ray ray);
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -82,7 +81,7 @@ int				main(void)
 		while (x < window.width)
 		{
 			color = ray_trace(get_ray(x, y, camera, window), scene);
-				my_mlx_pixel_put(&img, x, y, color.b);
+				my_mlx_pixel_put(&img, x, y, rgb_to_int(color));
 			x++;
 		}
 		y++;
