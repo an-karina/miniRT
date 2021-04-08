@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:53:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:17:55 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:53:36 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_object
 {
 	t_color		color;
 	void		*shape;
+	double		(*intersection)(t_camera *, struct s_object *, t_ray);
 }				t_object;
 
 #endif

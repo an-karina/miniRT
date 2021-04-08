@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@pashalove.com>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:02:11 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:54:30 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "scene.h"
 #include "object.h"
 #include "../libft/libft.h"
+
+double		solve_equation(t_camera *camera, t_object *object, t_ray ray);
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -61,6 +63,7 @@ int				main(void)
 	object.color.g = 255;
 	object.color.b = 0;
 	object.shape = &sphere;
+	object.intersection = &solve_equation;
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 	
@@ -70,6 +73,7 @@ int				main(void)
 	object_1.color.g = 255;
 	object_1.color.b = 0;
 	object_1.shape = &(sphere_1);
+	object_1.intersection = &solve_equation;
 	(scene.cameras)->next = ft_lstnew(&camera);
 	(scene.objects)->next = ft_lstnew(&object_1);
 	while (y < window.height) 
