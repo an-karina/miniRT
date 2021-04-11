@@ -13,6 +13,7 @@
 #include "header_struct.h"
 #include "scene.h"
 #include "solve_equation.h"
+#include "object.h"
 
 double		discriminant(double a, double b, double c)
 {
@@ -44,7 +45,13 @@ double		solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray)
 
 double			solve_equation_plane(t_camera *camera, t_object *object, t_ray ray)
 {
-	
+	double t;
+	t_plane *plane;
+
+	plane = (t_plane *)(object->shape);
+	t = vec_dot(vec_sub((t_vec)((plane)->p), (t_vec)ray.point), (plane)->norm);
+	t = t / (vec_dot(ray.direction, (plane)->norm));
+	return (t);
 }
 
 t_color		ray_trace(t_ray ray, t_scene scene)

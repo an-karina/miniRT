@@ -83,11 +83,11 @@ int				main(void)
 	plane.norm = fill_vector(0.0, 0.0, 1.0);
 	object_plane.color.r = 150;
 	object_plane.color.g = 150;
-	object_plane.color.b = 150;
+	object_plane.color.b = 255;
 	object_plane.shape = &plane;
-	object_plane.intersection = &solve_equation_plane
-	((scene.cameras)->next)->next = ft_lstnew(&camera);
-	((scene.object_plane)->next)->next = ft_lstnew(&object_plane);
+	object_plane.intersection = &solve_equation_plane;
+	(scene.cameras)->next->next = ft_lstnew(&camera);
+	(scene.objects)->next->next = ft_lstnew(&object_plane);
 	while (y < window.height) 
 	{
 		x = 0;
