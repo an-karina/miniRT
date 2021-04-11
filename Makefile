@@ -10,17 +10,17 @@ OBJS		= $(SRCS:.c=.o)
 CC			= gcc -g -O2
 RM			= rm -f
 CFLAGS		= -I includes/ -I mlx/
-LIBS		= -L . -lmlx
-MLX			= libmlx.dylib
+LIBS		= -L . -lmlx libft.a
+#MLX			= libmlx.a
 NAME		= miniRT
 LIBFT		= libft.a
 
 all:		$(NAME)
 
-$(NAME):	$(LIBFT) $(MLX) $(OBJS) $(INCS)
+$(NAME):	$(LIBFT) $(OBJS) $(INCS)
 				@cp libft/$(LIBFT) .
-				@cp mlx/$(MLX) .
-				gcc -g libft.a ${CFLAGS} -o miniRT ${OBJS} ${LIBS}
+#				@cp mlx/$(MLX) .
+				gcc -g -framework AppKit -framework OpenGL libmlx.a  ${CFLAGS}  ${OBJS} ${LIBS} -o miniRT
 				@echo "Done"
 
 $(LIBFT):		
@@ -28,10 +28,11 @@ $(LIBFT):
 
 $(MLX):
 				@make -C mlx 
-clean:
-			$(RM) $(OBJS)
 
-fclean:		clean
+clean:
+				$(RM) $(OBJS)
+
+fclean:
 				$(RM) $(NAME) $(MLX) $(LIBFT)
 				@make clean -C mlx
 				@make clean -C libft

@@ -27,8 +27,6 @@ typedef struct	s_scene
 }				t_scene;
 
 t_ray			get_ray(int x, int y, t_camera camera, t_wind winndow);
-double			discriminant(double a, double b, double c);
-double			solve_equation(t_camera *camera, t_object *object, t_ray ray);
 t_color			ray_trace(t_ray ray, t_scene scene);
 
 #endif

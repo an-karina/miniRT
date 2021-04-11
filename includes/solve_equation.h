@@ -26,4 +26,7 @@ typedef struct	s_roots
 	double		t_2;
 }				t_roots;
 
+double			discriminant(double a, double b, double c);
+double			solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray);
+double			solve_equation_plane(t_camera *camera, t_object *object, t_ray ray);
 #endif

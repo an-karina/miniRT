@@ -14,6 +14,6 @@
 
 int		rgb_to_int(t_color color)
 {
-	return (255 * 255 * 255 * color.r + 255 * 255 * color.g
-			+ 255 * color.b);
+	return (255 * 255 * color.r + 255 * color.g
+			+ color.b);
 }

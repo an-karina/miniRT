@@ -17,6 +17,7 @@
 #include "scene.h"
 #include "object.h"
 #include "light.h"
+#include "solve_equation.h"
 #include "../libft/libft.h"
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -41,8 +42,10 @@ int				main(void)
 	int			y;
 	t_sphere	sphere;
 	t_sphere	sphere_1;
+	t_plane		plane;
 	t_object	object;
 	t_object	object_1;
+	t_object	object_plane;
 	t_scene		scene;
 	
 	window = fill_wind(1500, 1000);
@@ -58,23 +61,33 @@ int				main(void)
 	y = 0;
 	sphere.center = fill_point(0, 0, 10);
 	sphere.r = 2;
-	object.color.r = 0;
+	object.color.r = 100;
 	object.color.g = 255;
-	object.color.b = 0;
+	object.color.b = 80;
 	object.shape = &sphere;
-	object.intersection = &solve_equation;
+	object.intersection = &solve_equation_sphere;
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 	
 	sphere_1.center = fill_point(0, 6, 12);
 	sphere_1.r = 3;
-	object_1.color.r = 0;
-	object_1.color.g = 255;
-	object_1.color.b = 0;
+	object_1.color.r = 150;
+	object_1.color.g = 150;
+	object_1.color.b = 150;
 	object_1.shape = &(sphere_1);
-	object_1.intersection = &solve_equation;
+	object_1.intersection = &solve_equation_sphere;
 	(scene.cameras)->next = ft_lstnew(&camera);
 	(scene.objects)->next = ft_lstnew(&object_1);
+
+	plane.p = fill_point(0.0, 3.0, 10.0);
+	plane.norm = fill_vector(0.0, 0.0, 1.0);
+	object_plane.color.r = 150;
+	object_plane.color.g = 150;
+	object_plane.color.b = 150;
+	object_plane.shape = &plane;
+	object_plane.intersection = &solve_equation_plane
+	((scene.cameras)->next)->next = ft_lstnew(&camera);
+	((scene.object_plane)->next)->next = ft_lstnew(&object_plane);
 	while (y < window.height) 
 	{
 		x = 0;

@@ -21,6 +21,12 @@ typedef struct	s_sphere
 	double		r;
 }				t_sphere;
 
+typedef struct	s_plane
+{
+	t_point		p;
+	t_vec		norm;
+}				t_plane;
+
 typedef struct	s_object
 {
 	t_color		color;

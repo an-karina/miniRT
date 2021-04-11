@@ -19,7 +19,7 @@ double		discriminant(double a, double b, double c)
 	return (b * b - 4 * a * c);
 }
 
-double		solve_equation(t_camera *camera, t_object *object, t_ray ray)
+double		solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray)
 {
 	t_coeff		coeff;
 	t_roots		roots;
@@ -42,6 +42,11 @@ double		solve_equation(t_camera *camera, t_object *object, t_ray ray)
 	return (roots.t_1);
 }
 
+double			solve_equation_plane(t_camera *camera, t_object *object, t_ray ray)
+{
+	
+}
+
 t_color		ray_trace(t_ray ray, t_scene scene)
 {
 	double		t;
@@ -50,7 +55,7 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 
 	black.r = 0;
 	black.g = 0;
-	black.b = 255;
+	black.b = 50;
 	
 	while (scene.objects != NULL)
 	{
