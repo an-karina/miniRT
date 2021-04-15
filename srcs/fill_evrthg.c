@@ -56,7 +56,8 @@ t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window)
 	if (is_null_vec(vec_cross(camera.view, z)))
 		z = fill_vector(1, 0, 0);
 	camera.base.k = vec_norm(view);
-	camera.base.i = vec_norm(vec_cross(camera.base.k, z));
+	//camera.base.i = vec_norm(vec_cross(camera.base.k, z));
+	camera.base.i = vec_norm(vec_cross(z, camera.base.k));
 	camera.base.j = vec_cross(camera.base.i, camera.base.k);
 	return (camera);
 }

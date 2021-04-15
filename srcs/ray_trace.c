@@ -20,7 +20,7 @@ double		discriminant(double a, double b, double c)
 	return (b * b - 4 * a * c);
 }
 
-double		solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray)
+double		solve_equation_sphere(t_object *object, t_ray ray)
 {
 	t_coeff		coeff;
 	t_roots		roots;
@@ -30,7 +30,7 @@ double		solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray)
 
 	sphere = (t_sphere *)(object->shape);
 	coeff.a = vec_dot(ray.direction, ray.direction);
-	vec_oc = vec_sub((t_vec)(camera->position), (t_vec)(sphere->center));
+	vec_oc = vec_sub((t_vec)(ray.point), (t_vec)(sphere->center));
 	coeff.b = 2 * vec_dot(ray.direction, vec_oc);
 	coeff.c = vec_dot(vec_oc, vec_oc) - (sphere->r * sphere->r);
 	disc = discriminant(coeff.a, coeff.b, coeff.c);
@@ -43,7 +43,7 @@ double		solve_equation_sphere(t_camera *camera, t_object *object, t_ray ray)
 	return (roots.t_1);
 }
 
-double			solve_equation_plane(t_camera *camera, t_object *object, t_ray ray)
+double			solve_equation_plane(t_object *object, t_ray ray)
 {
 	double t;
 	t_plane *plane;
@@ -64,25 +64,62 @@ t_color		ambient(t_ambient ambient, t_color color)
 	return (intensity);
 }
 
+t_vec			normal_sphere(double t, t_ray ray, t_object object)
+{
+	t_vec norm;
+	t_sphere *sphere;
+
+	sphere = (t_sphere *)(object.shape);
+	norm = vec_add((t_vec)ray.point, vec_mul(ray.direction, t));
+	norm = vec_sub(norm, (t_vec)(sphere->center));
+	norm = vec_norm(norm);
+	if (vec_dot(ray.direction, norm) > 0)
+		norm = vec_mul(norm, -1);
+	return (norm);
+}
+
+t_vec			normal_plane(double t, t_ray ray, t_object object)
+{
+	t_plane *plane;
+
+	plane = (t_plane *)object.shape;
+	if (vec_dot(ray.direction, plane->norm) > 0)
+		return (vec_mul(plane->norm, -1));
+	return (plane->norm);
+}
+
+t_color		lightnig(double t, t_ray ray, t_object *obj_max, t_scene scene)
+{
+	return (ambient(scene.ambient, obj_max->color));
+}
+
 t_color		ray_trace(t_ray ray, t_scene scene)
 {
 	double		t;
 	t_color		black;
 	t_object	*object;
+	double		t_max;
+	t_object	*obj_max;
+	t_vec		norm;
 
 	black.r = 0;
 	black.g = 0;
 	black.b = 50;
 	
+	t_max = 0;
 	while (scene.objects != NULL)
 	{
 		object = (scene.objects)->content;
-		t = (object->intersection)((t_camera *)(
-					(scene.cameras)->content), object, ray);
-		if (t > 0)
-			//return (ambient(scene.ambient, ((t_object *)(scene.objects)->content)->color));
-			return (((t_object *)(scene.objects)->content)->color);
+		t = (object->intersection)(object, ray);
+		if ((t > 0) && (t > t_max))
+		{
+			t_max = t;
+			obj_max = object;
+			//norm = (object->normal)(t_max, ray, *obj_max);			
+		}
 		scene.objects = (scene.objects)->next;
 	}
+	if (t_max)
+		return (lightnig(t_max, ray, obj_max, scene));
 	return (black);
 }

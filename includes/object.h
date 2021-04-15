@@ -31,7 +31,8 @@ typedef struct	s_object
 {
 	t_color		color;
 	void		*shape;
-	double		(*intersection)(t_camera *, struct s_object *, t_ray);
+	double		(*intersection)(struct s_object *, t_ray);
+	t_vec		(*normal)(double, t_ray, struct s_object);
 }				t_object;
 
 #endif
