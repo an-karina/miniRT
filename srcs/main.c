@@ -47,11 +47,13 @@ int				main(void)
 	t_object	object_1;
 	t_object	object_plane;
 	t_scene		scene;
+	t_ambient	ambient;
+	t_light		light;
 	
 	window = fill_wind(1500, 1000);
 	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
-	camera = fill_camera(point_of_view, view, (double)80, window);
+	camera = fill_camera(point_of_view, view, (double)50, window);
 	mlx = mlx_init();
     mlx_win = mlx_new_window(mlx, window.width, window.height, "Hello world!");
     img.img = mlx_new_image(mlx,  window.width,  window.height);
@@ -59,7 +61,12 @@ int				main(void)
 								&img.endian);
 	x = 0;
 	y = 0;
-	sphere.center = fill_point(0, 0, 10);
+	ambient.intensity = 1;
+	ambient.color.r = 0;
+	ambient.color.g = 0;
+	ambient.color.b = 50;
+	scene.ambient = ambient;
+	sphere.center = fill_point(-10.0, 0.0, 15.0);
 	sphere.r = 2;
 	object.color.r = 100;
 	object.color.g = 255;
@@ -69,25 +76,25 @@ int				main(void)
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 	
-	sphere_1.center = fill_point(0, 6, 12);
-	sphere_1.r = 3;
-	object_1.color.r = 150;
-	object_1.color.g = 150;
-	object_1.color.b = 150;
-	object_1.shape = &(sphere_1);
-	object_1.intersection = &solve_equation_sphere;
-	(scene.cameras)->next = ft_lstnew(&camera);
-	(scene.objects)->next = ft_lstnew(&object_1);
+	// sphere_1.center = fill_point(0, 6, 12);
+	// sphere_1.r = 3;
+	// object_1.color.r = 150;
+	// object_1.color.g = 150;
+	// object_1.color.b = 150;
+	// object_1.shape = &(sphere_1);
+	// object_1.intersection = &solve_equation_sphere;
+	// (scene.cameras)->next = ft_lstnew(&camera);
+	// (scene.objects)->next = ft_lstnew(&object_1);
 
-	plane.p = fill_point(0.0, 3.0, 10.0);
-	plane.norm = fill_vector(0.0, 0.0, 1.0);
-	object_plane.color.r = 150;
-	object_plane.color.g = 150;
-	object_plane.color.b = 255;
-	object_plane.shape = &plane;
-	object_plane.intersection = &solve_equation_plane;
-	(scene.cameras)->next->next = ft_lstnew(&camera);
-	(scene.objects)->next->next = ft_lstnew(&object_plane);
+	// plane.p = fill_point(0.0, 1.0, 1.0);
+	// plane.norm = vec_norm(fill_vector(0.0,1.0, 0.0));
+	// object_plane.color.r = 150;
+	// object_plane.color.g = 150;
+	// object_plane.color.b = 255;
+	// object_plane.shape = &plane;
+	// object_plane.intersection = &solve_equation_plane;
+	// (scene.cameras)->next->next = ft_lstnew(&camera);
+	// (scene.objects)->next->next = ft_lstnew(&object_plane);
 	while (y < window.height) 
 	{
 		x = 0;

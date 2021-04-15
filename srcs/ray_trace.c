@@ -54,6 +54,16 @@ double			solve_equation_plane(t_camera *camera, t_object *object, t_ray ray)
 	return (t);
 }
 
+t_color		ambient(t_ambient ambient, t_color color)
+{
+	t_color intensity;
+
+	intensity.r = ((ambient.color.r / 255) * ambient.intensity) * color.r;
+	intensity.g = ((ambient.color.g / 255) * ambient.intensity) * color.g;
+	intensity.b = ((ambient.color.b / 255) * ambient.intensity) * color.b;
+	return (intensity);
+}
+
 t_color		ray_trace(t_ray ray, t_scene scene)
 {
 	double		t;
@@ -70,6 +80,7 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 		t = (object->intersection)((t_camera *)(
 					(scene.cameras)->content), object, ray);
 		if (t > 0)
+			//return (ambient(scene.ambient, ((t_object *)(scene.objects)->content)->color));
 			return (((t_object *)(scene.objects)->content)->color);
 		scene.objects = (scene.objects)->next;
 	}
