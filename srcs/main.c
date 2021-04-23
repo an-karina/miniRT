@@ -51,7 +51,7 @@ int				main(void)
 	t_light		light;
 	
 	window = fill_wind(1500, 1000);
-	point_of_view = fill_point(0, -5, 0);
+	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
 	camera = fill_camera(point_of_view, view, (double)50, window);
 	mlx = mlx_init();

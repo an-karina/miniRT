@@ -98,28 +98,29 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 	double		t;
 	t_color		black;
 	t_object	*object;
-	double		t_max;
-	t_object	*obj_max;
+	double		t_min;
+	t_object	*obj_min;
 	t_vec		norm;
 
 	black.r = 0;
 	black.g = 0;
 	black.b = 50;
-	
-	t_max = 0;
+
+	obj_min = (scene.objects)->content;
+	t_min = (object->intersection)(obj_min, ray);
 	while (scene.objects != NULL)
 	{
 		object = (scene.objects)->content;
 		t = (object->intersection)(object, ray);
-		if ((t > 0) && (t > t_max))
+		if ((t > 0) && (t <= t_min))
 		{
-			t_max = t;
-			obj_max = object;
+			t_min = t;
+			obj_min = object;
 			//norm = (object->normal)(t_max, ray, *obj_max);			
 		}
 		scene.objects = (scene.objects)->next;
 	}
-	if (t_max)
-		return (lightnig(t_max, ray, obj_max, scene));
+	if (t_min)
+		return (lightnig(t_min, ray, obj_min, scene));
 	return (black);
 }
