@@ -20,6 +20,17 @@
 #include "solve_equation.h"
 #include "../libft/libft.h"
 
+t_list	*ft_lstnew(void *content)
+{
+	t_list *list;
+
+	if (!(list = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	list->content = content;
+	list->next = NULL;
+	return (list);
+}
+
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
     char    *dst;
@@ -49,11 +60,11 @@ int				main(void)
 	t_scene		scene;
 	t_ambient	ambient;
 	t_light		light;
-	
-	window = fill_wind(1500, 1000);
+
+	window = fill_wind(700, 700);
 	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
-	camera = fill_camera(point_of_view, view, (double)50, window);
+	camera = fill_camera(point_of_view, view, (double)90, window);
 	mlx = mlx_init();
     mlx_win = mlx_new_window(mlx, window.width, window.height, "Hello world!");
     img.img = mlx_new_image(mlx,  window.width,  window.height);
@@ -67,20 +78,20 @@ int				main(void)
 	ambient.color.g = 255;
 	ambient.color.b = 255;
 	scene.ambient = ambient;
-	
-	sphere.center = fill_point(-10.0, 0.0, 15.0);
-	sphere.r = 2;
+
+	sphere.center = fill_point(0.0, 0.0, 10.0);
+	sphere.r = 1;
 	object.color.r = 100;
-	object.color.g = 255;
-	object.color.b = 80;
+	object.color.g = 0;
+	object.color.b = 0;
 	object.shape = &sphere;
 	object.intersection = &solve_equation_sphere;
 	object.normal = &normal_sphere;
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
-	
-	sphere_1.center = fill_point(0, 1.0, 7.0);
-	sphere_1.r = 3;
+
+	sphere_1.center = fill_point(0, 4.0, 7.0);
+	sphere_1.r = 1;
 	object_1.color.r = 150;
 	object_1.color.g = 150;
 	object_1.color.b = 150;
@@ -90,8 +101,8 @@ int				main(void)
 	(scene.cameras)->next = ft_lstnew(&camera);
 	(scene.objects)->next = ft_lstnew(&object_1);
 
-	plane.p = fill_point(0.0, 1.0, 7.0);
-	plane.norm = vec_norm(fill_vector(0.0,1.0, 0.0));
+	plane.p = fill_point(0.0, 0.0, 2.0);
+	plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
 	object_plane.color.r = 150;
 	object_plane.color.g = 150;
 	object_plane.color.b = 255;
@@ -100,9 +111,17 @@ int				main(void)
 	object_plane.normal = &normal_plane;
 	(scene.cameras)->next->next = ft_lstnew(&camera);
 	(scene.objects)->next->next = ft_lstnew(&object_plane);
+	// (scene.cameras)->next = ft_lstnew(&camera);
+	// (scene.objects)->next = ft_lstnew(&object_plane);
 
+	light.center = fill_point(0.0, 0.0, 0.0);
+	light.intensity = 0.8;
+	light.color.r = 255;
+	light.color.g = 255;
+	light.color.b = 255;
+	scene.light = ft_lstnew(&light);
 
-	while (y < window.height) 
+	while (y < window.height)
 	{
 		x = 0;
 		while (x < window.width)
