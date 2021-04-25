@@ -14,6 +14,7 @@
 #include "scene.h"
 #include "solve_equation.h"
 #include "object.h"
+#include <stdio.h>
 
 double		discriminant(double a, double b, double c)
 {
@@ -138,9 +139,10 @@ t_color		lightnig(double t, t_ray ray, t_object *obj_max, t_scene scene)
 		light_intes.z = 0;
 	}
 
-	color.r = (ambient.x + light_intes.x) * (*obj_max).color.r;
-	color.g = (ambient.y + light_intes.y) * (*obj_max).color.g;
-	color.b = (ambient.z + light_intes.z) * (*obj_max).color.b;
+	color.r = ((ambient.x + light_intes.x)) * ((double)(*obj_max).color.r);
+	color.g = (ambient.y + light_intes.y) * ((double)(*obj_max).color.g);
+	color.b = (ambient.z + light_intes.z) * ((double)(*obj_max).color.b);
+	//printf("%f | %f | %f\n", ambient.x + light_intes.x, ambient.y + light_intes.y, ambient.z + light_intes.z);
 	return (color);
 }
 
@@ -155,7 +157,7 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 
 	black.r = 0;
 	black.g = 0;
-	black.b = 0;
+	black.b = 50;
 
 	obj_closest = (scene.objects)->content;
 	//t_closest = (obj_closest->intersection)(obj_closest, ray);

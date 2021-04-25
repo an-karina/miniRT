@@ -13,23 +13,13 @@
 #include "header_struct.h"
 #include "header_fill.h"
 #include "vector.h"
+#include <stdio.h>
 #include "camera.h"
 #include "scene.h"
 #include "object.h"
 #include "light.h"
 #include "solve_equation.h"
 #include "../libft/libft.h"
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list *list;
-
-	if (!(list = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	return (list);
-}
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -73,15 +63,15 @@ int				main(void)
 	x = 0;
 	y = 0;
 
-	ambient.intensity = 1;
+	ambient.intensity = 0.2;
 	ambient.color.r = 255;
 	ambient.color.g = 255;
 	ambient.color.b = 255;
 	scene.ambient = ambient;
 
-	sphere.center = fill_point(0.0, 0.0, 10.0);
+	sphere.center = fill_point(7.0, 0.0, 10.0);
 	sphere.r = 1;
-	object.color.r = 100;
+	object.color.r = 170;
 	object.color.g = 0;
 	object.color.b = 0;
 	object.shape = &sphere;
@@ -90,29 +80,27 @@ int				main(void)
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 
-	sphere_1.center = fill_point(0, 4.0, 7.0);
-	sphere_1.r = 1;
-	object_1.color.r = 150;
-	object_1.color.g = 150;
-	object_1.color.b = 150;
-	object_1.shape = &(sphere_1);
-	object_1.intersection = &solve_equation_sphere;
-	object_1.normal = &normal_sphere;
-	(scene.cameras)->next = ft_lstnew(&camera);
-	(scene.objects)->next = ft_lstnew(&object_1);
-
-	plane.p = fill_point(0.0, 0.0, 2.0);
-	plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
-	object_plane.color.r = 150;
-	object_plane.color.g = 150;
-	object_plane.color.b = 255;
-	object_plane.shape = &plane;
-	object_plane.intersection = &solve_equation_plane;
-	object_plane.normal = &normal_plane;
-	(scene.cameras)->next->next = ft_lstnew(&camera);
-	(scene.objects)->next->next = ft_lstnew(&object_plane);
+	// sphere_1.center = fill_point(0, 3.0, 7.0);
+	// sphere_1.r = 1;
+	// object_1.color.r = 150;
+	// object_1.color.g = 150;
+	// object_1.color.b = 150;
+	// object_1.shape = &(sphere_1);
+	// object_1.intersection = &solve_equation_sphere;
+	// object_1.normal = &normal_sphere;
 	// (scene.cameras)->next = ft_lstnew(&camera);
-	// (scene.objects)->next = ft_lstnew(&object_plane);
+	// (scene.objects)->next = ft_lstnew(&object_1);
+
+	// plane.p = fill_point(0.0, 4.0, 2.0);
+	// plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
+	// object_plane.color.r = 150;
+	// object_plane.color.g = 150;
+	// object_plane.color.b = 255;
+	// object_plane.shape = &plane;
+	// object_plane.intersection = &solve_equation_plane;
+	// object_plane.normal = &normal_plane;
+	// (scene.cameras)->next->next = ft_lstnew(&camera);
+	// (scene.objects)->next->next = ft_lstnew(&object_plane);
 
 	light.center = fill_point(0.0, 0.0, 0.0);
 	light.intensity = 0.8;
@@ -127,7 +115,8 @@ int				main(void)
 		while (x < window.width)
 		{
 			color = ray_trace(get_ray(x, y, camera, window), scene);
-				my_mlx_pixel_put(&img, x, y, rgb_to_int(color));
+			my_mlx_pixel_put(&img, x, y, rgb_to_int(color));
+			//printf("x = %d | y = %d | color = %d\n", x, y, rgb_to_int(color));
 			x++;
 		}
 		y++;
