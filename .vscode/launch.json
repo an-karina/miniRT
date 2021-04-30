@@ -4,7 +4,7 @@
 		"name": "(lldb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "miniRT",
+		"program": "${/Users/kshantel/Desktop/mini}/miniRT",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",

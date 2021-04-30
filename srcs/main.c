@@ -69,7 +69,7 @@ int				main(void)
 	ambient.color.b = 255;
 	scene.ambient = ambient;
 
-	sphere.center = fill_point(7.0, 0.0, 10.0);
+	sphere.center = fill_point(-3.0, 0.0, 10.0);
 	sphere.r = 1;
 	object.color.r = 170;
 	object.color.g = 0;
@@ -80,27 +80,27 @@ int				main(void)
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 
-	// sphere_1.center = fill_point(0, 3.0, 7.0);
-	// sphere_1.r = 1;
-	// object_1.color.r = 150;
-	// object_1.color.g = 150;
-	// object_1.color.b = 150;
-	// object_1.shape = &(sphere_1);
-	// object_1.intersection = &solve_equation_sphere;
-	// object_1.normal = &normal_sphere;
-	// (scene.cameras)->next = ft_lstnew(&camera);
-	// (scene.objects)->next = ft_lstnew(&object_1);
+	sphere_1.center = fill_point(0.0, 0.0, 7.0);
+	sphere_1.r = 1;
+	object_1.color.r = 150;
+	object_1.color.g = 150;
+	object_1.color.b = 150;
+	object_1.shape = &(sphere_1);
+	object_1.intersection = &solve_equation_sphere;
+	object_1.normal = &normal_sphere;
+	(scene.cameras)->next = ft_lstnew(&camera);
+	(scene.objects)->next = ft_lstnew(&object_1);
 
-	// plane.p = fill_point(0.0, 4.0, 2.0);
-	// plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
-	// object_plane.color.r = 150;
-	// object_plane.color.g = 150;
-	// object_plane.color.b = 255;
-	// object_plane.shape = &plane;
-	// object_plane.intersection = &solve_equation_plane;
-	// object_plane.normal = &normal_plane;
-	// (scene.cameras)->next->next = ft_lstnew(&camera);
-	// (scene.objects)->next->next = ft_lstnew(&object_plane);
+	plane.p = fill_point(1.0, 0.0, 0.0);
+	plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
+	object_plane.color.r = 150;
+	object_plane.color.g = 150;
+	object_plane.color.b = 255;
+	object_plane.shape = &plane;
+	object_plane.intersection = &solve_equation_plane;
+	object_plane.normal = &normal_plane;
+	(scene.cameras)->next->next = ft_lstnew(&camera);
+	(scene.objects)->next->next = ft_lstnew(&object_plane);
 
 	light.center = fill_point(0.0, 0.0, 0.0);
 	light.intensity = 0.8;

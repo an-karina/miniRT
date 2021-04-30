@@ -157,7 +157,7 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 
 	black.r = 0;
 	black.g = 0;
-	black.b = 50;
+	black.b = 0;
 
 	obj_closest = (scene.objects)->content;
 	//t_closest = (obj_closest->intersection)(obj_closest, ray);
@@ -170,7 +170,6 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 		{
 			t_closest = t;
 			obj_closest = object;
-			//norm = (object->normal)(t_max, ray, *obj_max);
 		}
 		scene.objects = (scene.objects)->next;
 	}

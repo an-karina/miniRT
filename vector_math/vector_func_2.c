@@ -16,8 +16,8 @@ t_vec	vec_cross(t_vec u, t_vec v)
 {
 	t_vec sum;
 
-	sum.x = u.y * v.z - u.x * v.y;
-	sum.y = u.x * v.z - u.z * v.x;
+	sum.x = u.y * v.z - u.z * v.y;
+	sum.y = u.z * v.x - u.x * v.z;
 	sum.z = u.x * v.y - u.y * v.x;
 	return (sum);
 }
