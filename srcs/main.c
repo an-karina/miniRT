@@ -50,8 +50,9 @@ int				main(void)
 	t_scene		scene;
 	t_ambient	ambient;
 	t_light		light;
+	t_light		light_2;
 
-	window = fill_wind(700, 700);
+	window = fill_wind(950, 950);
 	point_of_view = fill_point(0, 0, 0);
 	view = fill_vector(0, 0, 1);
 	camera = fill_camera(point_of_view, view, (double)90, window);
@@ -64,16 +65,12 @@ int				main(void)
 	y = 0;
 
 	ambient.intensity = 0.2;
-	ambient.color.r = 255;
-	ambient.color.g = 255;
-	ambient.color.b = 255;
+	ambient.color = (t_color){255, 255, 255};
 	scene.ambient = ambient;
 
 	sphere.center = fill_point(-3.0, 0.0, 10.0);
 	sphere.r = 1;
-	object.color.r = 170;
-	object.color.g = 0;
-	object.color.b = 0;
+	object.color = (t_color){170, 0, 0};
 	object.shape = &sphere;
 	object.intersection = &solve_equation_sphere;
 	object.normal = &normal_sphere;
@@ -82,9 +79,7 @@ int				main(void)
 
 	sphere_1.center = fill_point(0.0, 0.0, 7.0);
 	sphere_1.r = 1;
-	object_1.color.r = 150;
-	object_1.color.g = 150;
-	object_1.color.b = 150;
+	object_1.color = (t_color){150, 150, 150};
 	object_1.shape = &(sphere_1);
 	object_1.intersection = &solve_equation_sphere;
 	object_1.normal = &normal_sphere;
@@ -93,9 +88,7 @@ int				main(void)
 
 	plane.p = fill_point(1.0, 0.0, 0.0);
 	plane.norm = vec_norm(fill_vector(1.0,0.0, 0.0));
-	object_plane.color.r = 150;
-	object_plane.color.g = 150;
-	object_plane.color.b = 255;
+	object_plane.color = (t_color){150, 150, 255};
 	object_plane.shape = &plane;
 	object_plane.intersection = &solve_equation_plane;
 	object_plane.normal = &normal_plane;
@@ -103,11 +96,14 @@ int				main(void)
 	(scene.objects)->next->next = ft_lstnew(&object_plane);
 
 	light.center = fill_point(0.0, 0.0, 0.0);
-	light.intensity = 0.8;
-	light.color.r = 255;
-	light.color.g = 255;
-	light.color.b = 255;
+	light.intensity = 0.4;
+	light.color = (t_color){255, 255, 255};
 	scene.light = ft_lstnew(&light);
+
+	light_2.center = fill_point(2.0, 2.0, 2.0);
+	light_2.intensity = 0.4;
+	light_2.color = (t_color){255, 0, 255};
+	scene.light->next = ft_lstnew(&light_2);
 
 	while (y < window.height)
 	{

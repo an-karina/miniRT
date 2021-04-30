@@ -16,6 +16,11 @@
 #include "object.h"
 #include <stdio.h>
 
+void		show_vec(t_vec v)
+{
+	printf("( %f, %f, %f) ", v.x, v.y, v.z);
+}
+
 double		discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
@@ -115,34 +120,34 @@ t_color		lightnig(double t, t_ray ray, t_object *obj_max, t_scene scene)
 	t_light		*light;
 	t_vec		ambient;
 	t_vec		light_intes;
+	t_vec		sum_of_light;
 	t_vec		light_direction;
 	double		dot_n_l;
 
-	light = (t_light *)((scene.light)->content);
+	sum_of_light = (t_vec){0.0, 0.0, 0.0};
 	ambient = intensity(scene.ambient.color, scene.ambient.intensity);
-	norm = ((*obj_max).normal)(t, ray, *obj_max);
-	//P = O + td; 
 	point = vec_mul(ray.direction, t);
 	point = vec_add((t_vec)ray.point, point);
-
-	light_direction = vec_sub((t_vec)(light->center), point);
-	light_direction = vec_norm(light_direction);
-
-	light_intes = intensity(light->color,light->intensity);
-	dot_n_l = vec_dot(norm, light_direction);
-	if (dot_n_l > 0)
-		light_intes = vec_mul(light_intes, dot_n_l);
-	else
+	norm = ((*obj_max).normal)(t, ray, *obj_max);
+	while (scene.light != NULL)
 	{
-		light_intes.x = 0;
-		light_intes.y = 0;
-		light_intes.z = 0;
+		light_direction = (t_vec){0.0, 0.0, 0.0};
+		light_intes = (t_vec){0.0, 0.0, 0.0};
+		light = (t_light *)((scene.light)->content);
+		light_direction = vec_sub((t_vec)(light->center), point);
+		light_direction = vec_norm(light_direction);
+		light_intes = intensity(light->color,light->intensity);
+		dot_n_l = vec_dot(norm, light_direction);
+		if (dot_n_l > 0)
+			light_intes = vec_mul(light_intes, dot_n_l);
+		else
+			light_intes = (t_vec){0, 0, 0};
+		sum_of_light = vec_add(sum_of_light, light_intes);
+		scene.light = (scene.light)->next;
 	}
-
-	color.r = ((ambient.x + light_intes.x)) * ((double)(*obj_max).color.r);
-	color.g = (ambient.y + light_intes.y) * ((double)(*obj_max).color.g);
-	color.b = (ambient.z + light_intes.z) * ((double)(*obj_max).color.b);
-	//printf("%f | %f | %f\n", ambient.x + light_intes.x, ambient.y + light_intes.y, ambient.z + light_intes.z);
+	color.r = (ambient.x + sum_of_light.x) * ((double)(*obj_max).color.r);
+	color.g = (ambient.y + sum_of_light.y) * ((double)(*obj_max).color.g);
+	color.b = (ambient.z + sum_of_light.z) * ((double)(*obj_max).color.b);
 	return (color);
 }
 
