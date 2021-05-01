@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/30 21:33:39 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/01 18:41:17 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				main(void)
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 
-	sphere_1.center = fill_point(0.0, 0.0, 7.0);
+	sphere_1.center = fill_point(0.0, 0.0, 10.0);
 	sphere_1.r = 1;
 	object_1.color = (t_color){150, 150, 150};
 	object_1.shape = &(sphere_1);
@@ -94,15 +94,16 @@ int				main(void)
 	(scene.cameras)->next->next = ft_lstnew(&camera);
 	(scene.objects)->next->next = ft_lstnew(&object_plane);
 
-	light.center = fill_point(0.0, 0.0, 0.0);
-	light.intensity = 0.4;
-	light.color = (t_color){255, 255, 255};
-	scene.light = ft_lstnew(&light);
+	// light.center = fill_point(0.0, 0.0, 0.0);
+	// light.intensity = 0.4;
+	// light.color = (t_color){255, 255, 255};
+	// scene.light = ft_lstnew(&light);
 
-	light_2.center = fill_point(2.0, 2.0, 2.0);
-	light_2.intensity = 0.4;
+	light_2.center = fill_point(5.0, 2.0, 2.0);
+	light_2.intensity = 0.8;
 	light_2.color = (t_color){255, 0, 255};
-	scene.light->next = ft_lstnew(&light_2);
+	// scene.light->next = ft_lstnew(&light_2);
+	scene.light = ft_lstnew(&light_2);
 
 	while (y < window.height)
 	{

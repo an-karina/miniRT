@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/01 15:54:56 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/01 19:09:58 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,13 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 	t_object	*object;
 	double		t_closest;
 	t_object	*obj_closest;
+	t_list		*tmp;
 	
 	black = (t_color){0, 0, 0};
 	obj_closest = (scene.objects)->content;
 	t_closest = INFINITY;
-	while (scene.objects != NULL)
+	tmp = scene.objects;
+	while (tmp != NULL)
 	{
 		object = (scene.objects)->content;
 		t = (object->intersection)(object, ray);
@@ -78,7 +80,7 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 			t_closest = t;
 			obj_closest = object;
 		}
-		scene.objects = (scene.objects)->next;
+		tmp = tmp->next;
 	}
 	if (t_closest < INFINITY)
 		return (lightnig(t_closest, ray, obj_closest, scene));
