@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 17:18:22 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/30 21:33:39 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_struct.h"
 #include "header_fill.h"
 #include "vector.h"
-#include <stdio.h>
 #include "camera.h"
 #include "scene.h"
 #include "object.h"

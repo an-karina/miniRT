@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header_struct.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:23:09 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/04/30 21:34:49 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../mlx/mlx.h"
 # include <math.h>
+# include <stdlib.h>
 
 typedef struct		s_window
 {
