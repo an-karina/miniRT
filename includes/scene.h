@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/01 13:39:53 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/01 15:52:29 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ t_color			lightnig(double t, t_ray ray, t_object *obj_max, t_scene scene);
 t_vec			normal_sphere(double t, t_ray ray, t_object object);
 t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			intensity(t_color color, double intensity);
-t_point			calculate_point(t_ray ray, double t);
+t_point			calc_point(t_ray ray, double t);
 
 #endif
