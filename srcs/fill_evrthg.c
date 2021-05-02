@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_evrthg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/19 17:42:24 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/02 19:00:27 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window)
 		z = fill_vector(0, 1, 0);
 	camera.base.k = vec_norm(view);
 	//camera.base.i = vec_norm(vec_cross(camera.base.k, z));
-	camera.base.i = vec_norm(vec_cross(z, camera.base.k));//(0,1,0)
+	camera.base.i = vec_norm(vec_cross(z, camera.base.k));
 	camera.base.j = vec_cross(camera.base.i, camera.base.k);
 	return (camera);
 }

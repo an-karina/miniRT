@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/01 18:41:17 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/02 20:57:22 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				main(void)
 	ambient.color = (t_color){255, 255, 255};
 	scene.ambient = ambient;
 
-	sphere.center = fill_point(-3.0, 0.0, 10.0);
+	sphere.center = fill_point(-5.0, 0.0, 10.0);
 	sphere.r = 1;
 	object.color = (t_color){170, 0, 0};
 	object.shape = &sphere;
@@ -99,7 +99,7 @@ int				main(void)
 	// light.color = (t_color){255, 255, 255};
 	// scene.light = ft_lstnew(&light);
 
-	light_2.center = fill_point(5.0, 2.0, 2.0);
+	light_2.center = fill_point(-11.0, 0.0, 9.0);
 	light_2.intensity = 0.8;
 	light_2.color = (t_color){255, 0, 255};
 	// scene.light->next = ft_lstnew(&light_2);

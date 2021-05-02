@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:20:50 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/02 14:37:43 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/02 20:54:41 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,22 @@ int			shadow(t_vec point, t_point light_center, t_scene scene)
 	t_ray		ray;
 	t_object	*object;
 	double		t;
-	double		t_min;
+	double		t_closest;
 	int			i = -1;
-	t_min = INFINITY;
-	ray.direction = vec_norm(vec_sub((t_vec)light_center, point));
+	
+	//ray.direction = vec_norm(mat_mul_vec(((t_camera *)(scene.cameras)->content)->base, vec_sub((t_vec)light_center, point)));
+	ray.direction = vec_sub((t_vec)light_center, point);
+	t_closest = vec_lenght(ray.direction);
+	ray.direction = vec_norm(ray.direction);
 	ray.point = point;
 	while (scene.objects != NULL)
 	{
 		object = (t_object *)scene.objects->content;
 		t = (object->intersection)(object, ray);
-		printf("%f \n", t);
-		if (t > 0 && t < t_min && t <= 1)
-			t_min = t;
+		if (t >= eps  && t <= t_closest)
+			return (1);
 		scene.objects = scene.objects->next;
 	}
-	if (t_min < INFINITY)
-	{
-		printf("haha\n");
-		return (1);
-	}
-	else
 		return (0);
 }
 
