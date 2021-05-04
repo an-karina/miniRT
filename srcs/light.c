@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:20:50 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/03 15:44:40 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:48:11 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "light.h"
 #include "stdio.h"
 
-t_vec		mul_intens_color(t_color color, double intensity)
+t_vec	mul_intens_color(t_color color, double intensity)
 {
 	t_vec		vec;
 
@@ -28,7 +28,7 @@ t_vec		mul_intens_color(t_color color, double intensity)
 	return (vec);
 }
 
-t_point		calc_point(t_ray ray, double t)
+t_point	calc_point(t_ray ray, double t)
 {
 	t_point		point;
 
@@ -37,7 +37,7 @@ t_point		calc_point(t_ray ray, double t)
 	return (point);
 }
 
-int			shadow(t_vec point, t_point light_center, t_scene scene)
+int	shadow(t_vec point, t_point light_center, t_scene scene)
 {
 	t_ray		ray;
 	t_object	*object;
@@ -59,7 +59,7 @@ int			shadow(t_vec point, t_point light_center, t_scene scene)
 	return (0);
 }
 
-t_vec		lightcolor(t_light *light, t_vec point, t_vec norm)
+t_vec	lightcolor(t_light *light, t_vec point, t_vec norm)
 {
 	t_vec		light_dir;
 	t_vec		light_intes;
@@ -75,7 +75,7 @@ t_vec		lightcolor(t_light *light, t_vec point, t_vec norm)
 	return (light_intes);
 }
 
-t_color		lightnig(double t, t_ray ray, t_object *obj, t_scene scene)
+t_color	lightnig(double t, t_ray ray, t_object *obj, t_scene scene)
 {
 	t_vec		color;
 	t_light		*light;

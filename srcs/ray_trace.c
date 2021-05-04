@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/03 15:53:35 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 12:06:31 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "solve_equation.h"
 #include "object.h"
 
-double			discriminant(double a, double b, double c)
+double	discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
 }
 
-double			solve_equation_sphere(t_object *object, t_ray ray)
+double	solve_equation_sphere(t_object *object, t_ray ray)
 {
 	t_coeff		coeff;
 	t_roots		roots;
@@ -38,12 +38,12 @@ double			solve_equation_sphere(t_object *object, t_ray ray)
 		return (-1);
 	roots.t_1 = (-coeff.b + sqrt(disc)) / (2 * coeff.a);
 	roots.t_2 = (-coeff.b - sqrt(disc)) / (2 * coeff.a);
-	roots.t_1 = (roots.t_2 >= 0 && roots.t_1 > 0 && roots.t_2 < roots.t_1) ?
-				(roots.t_2) : (roots.t_1);
+	if (roots.t_2 >= 0 && roots.t_1 > 0 && roots.t_2 < roots.t_1)
+		roots.t_1 = roots.t_2;
 	return (roots.t_1);
 }
 
-double			solve_equation_plane(t_object *object, t_ray ray)
+double	solve_equation_plane(t_object *object, t_ray ray)
 {
 	double		t;
 	t_plane		*plane;
@@ -57,7 +57,7 @@ double			solve_equation_plane(t_object *object, t_ray ray)
 	return (t);
 }
 
-t_color			ray_trace(t_ray ray, t_scene scene)
+t_color	ray_trace(t_ray ray, t_scene scene)
 {
 	double		t;
 	t_object	*object;

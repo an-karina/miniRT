@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   r_g_b.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 19:22:22 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:25:45 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 12:01:17 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_struct.h"
 
-int		rgb_to_int(t_color color)
+int	rgb_to_int(t_color color)
 {
 	return (256 * 256 * color.r + 256 * color.g
-			+ color.b);
+		+ color.b);
 }
