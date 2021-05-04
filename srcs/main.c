@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/02 20:57:22 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/03 15:35:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ int				main(void)
 
 	ambient.intensity = 0.2;
 	ambient.color = (t_color){255, 255, 255};
-	scene.ambient = ambient;
+	scene.amb = ambient;
 
 	sphere.center = fill_point(-5.0, 0.0, 10.0);
 	sphere.r = 1;
 	object.color = (t_color){170, 0, 0};
 	object.shape = &sphere;
 	object.intersection = &solve_equation_sphere;
-	object.normal = &normal_sphere;
+	object.norm = &normal_sphere;
 	scene.cameras = ft_lstnew(&camera);
 	scene.objects =  ft_lstnew(&object);
 
@@ -81,7 +81,7 @@ int				main(void)
 	object_1.color = (t_color){150, 150, 150};
 	object_1.shape = &(sphere_1);
 	object_1.intersection = &solve_equation_sphere;
-	object_1.normal = &normal_sphere;
+	object_1.norm = &normal_sphere;
 	(scene.cameras)->next = ft_lstnew(&camera);
 	(scene.objects)->next = ft_lstnew(&object_1);
 
@@ -90,7 +90,7 @@ int				main(void)
 	object_plane.color = (t_color){150, 150, 255};
 	object_plane.shape = &plane;
 	object_plane.intersection = &solve_equation_plane;
-	object_plane.normal = &normal_plane;
+	object_plane.norm = &normal_plane;
 	(scene.cameras)->next->next = ft_lstnew(&camera);
 	(scene.objects)->next->next = ft_lstnew(&object_plane);
 

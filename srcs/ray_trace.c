@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/02 14:36:12 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/03 15:53:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "solve_equation.h"
 #include "object.h"
 
-double		discriminant(double a, double b, double c)
+double			discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
 }
@@ -45,11 +45,10 @@ double			solve_equation_sphere(t_object *object, t_ray ray)
 
 double			solve_equation_plane(t_object *object, t_ray ray)
 {
-	double t;
-	t_plane *plane;
+	double		t;
+	t_plane		*plane;
 
 	plane = (t_plane *)(object->shape);
-	
 	t = vec_dot(vec_sub((t_vec)((plane)->p), (t_vec)ray.point), (plane)->norm);
 	if (vec_dot(ray.direction, (plane)->norm) > 0.000000001)
 		t = t / (vec_dot(ray.direction, (plane)->norm));
@@ -58,16 +57,14 @@ double			solve_equation_plane(t_object *object, t_ray ray)
 	return (t);
 }
 
-t_color		ray_trace(t_ray ray, t_scene scene)
+t_color			ray_trace(t_ray ray, t_scene scene)
 {
 	double		t;
-	t_color		black;
 	t_object	*object;
 	double		t_closest;
 	t_object	*obj_closest;
 	t_list		*tmp;
-	
-	black = (t_color){0, 0, 0};
+
 	obj_closest = (t_object *)(scene.objects)->content;
 	t_closest = INFINITY;
 	tmp = scene.objects;
@@ -85,5 +82,5 @@ t_color		ray_trace(t_ray ray, t_scene scene)
 	scene.objects = tmp;
 	if (t_closest < INFINITY)
 		return (lightnig(t_closest, ray, obj_closest, scene));
-	return (black);
+	return ((t_color){0, 0, 0});
 }

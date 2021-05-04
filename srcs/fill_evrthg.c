@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/02 19:00:27 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:42:21 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 #include "../includes/camera.h"
 #include "../includes/vector.h"
 
-t_wind		fill_wind(double width, double height)
+t_wind	fill_wind(double width, double height)
 {
-	t_wind window;
+	t_wind	window;
 
 	window.height = height;
 	window.width = width;
 	return (window);
 }
 
-t_vec		fill_vector(double x, double y, double z)
+t_vec	fill_vector(double x, double y, double z)
 {
-	t_vec vec;
+	t_vec	vec;
 
 	vec.x = x;
 	vec.y = y;
@@ -33,9 +33,9 @@ t_vec		fill_vector(double x, double y, double z)
 	return (vec);
 }
 
-t_point		fill_point(double x, double y, double z)
+t_point	fill_point(double x, double y, double z)
 {
-	t_point vec;
+	t_point	vec;
 
 	vec.x = x;
 	vec.y = y;
@@ -56,7 +56,6 @@ t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window)
 	if (is_null_vec(vec_cross(camera.view, z)))
 		z = fill_vector(0, 1, 0);
 	camera.base.k = vec_norm(view);
-	//camera.base.i = vec_norm(vec_cross(camera.base.k, z));
 	camera.base.i = vec_norm(vec_cross(z, camera.base.k));
 	camera.base.j = vec_cross(camera.base.i, camera.base.k);
 	return (camera);
