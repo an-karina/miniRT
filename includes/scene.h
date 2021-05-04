@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/01 19:00:47 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:36:47 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include "light.h"
 # include "../libft/libft.h"
 
-typedef struct	s_scene
+typedef struct s_scene
 {
 	t_list		*objects;
 	t_list		*cameras;
 	t_list		*light;
-	t_ambient	ambient;
+	t_ambient	amb;
 }				t_scene;
 
 t_ray			get_ray(int x, int y, t_camera camera, t_wind winndow);
