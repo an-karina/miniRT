@@ -6,16 +6,16 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 16:24:01 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 17:09:07 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_fill.h"
-#include "scene.h"
 #include "light.h"
 #include "solve_equation.h"
 #include "../libft/libft.h"	
 #include <stdio.h>
+#include "parser.h"
 
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -62,8 +62,10 @@ int				main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	scene.resolution.existance = DOES_NOT_EXIST;
-	scene.existance = DOES_NOT_EXIST;
+	// scene.resolution.existance = DOES_NOT_EXIST;
+	// scene.existance = DOES_NOT_EXIST;
+	// scene.amb.existance = DOES_NOT_EXIST;
+	scene = fill_scene_null(scene);
 	//printf("%s\n", argv[1]);
 	scene = parser(argv[1]);
 	//printf("%d | %d", scene.resolution.height, scene.resolution.width);

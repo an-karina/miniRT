@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:17:27 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 15:29:07 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 17:02:53 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 
 typedef struct s_ambient
 {
-	double		intensity;
-	t_color		color;
-}				t_ambient;
+	double			intensity;
+	t_color			color;
+	enum e_exist	existance;
+}					t_ambient;
 
 typedef struct s_light
 {

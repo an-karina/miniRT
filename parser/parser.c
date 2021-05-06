@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 16:54:20 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 17:04:19 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_scene	fill_scene_null(t_scene scene)
 
 	scene.existance = DOES_NOT_EXIST;
 	scene.resolution.existance = DOES_NOT_EXIST;
+	scene.amb.existance = DOES_NOT_EXIST;
 	return (scene);
 }
 

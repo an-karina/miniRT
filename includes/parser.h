@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 16:50:39 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 17:10:02 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_scene	parser(char *file_name);
 t_scene	fill_scene_null(t_scene scene);
 char	*ft_is_space(char *str);
 int		num_length(int num);
+int		correct_input(char *str);
 
 #endif
