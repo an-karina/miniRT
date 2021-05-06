@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:17:27 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:36:07 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:29:07 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define LIGHT_H
 
 # include "header_struct.h"
-# include "object.h"
-# include "scene.h"
 
 typedef struct s_ambient
 {

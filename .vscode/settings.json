@@ -1,6 +1,13 @@
 {
 	"files.associations": {
 		"vector.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"scene.h": "c",
+		"object.h": "c",
+		"camera.h": "c",
+		"header_fill.h": "c",
+		"solve_equation.h": "c",
+		"light.h": "c",
+		"parser.h": "c"
 	}
 }

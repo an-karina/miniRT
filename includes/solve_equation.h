@@ -6,12 +6,14 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:07:28 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:37:07 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:26:43 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLVE_EQUATION_H
 # define SOLVE_EQUATION_H
+
+#include "object.h"
 
 typedef struct s_coeff
 {

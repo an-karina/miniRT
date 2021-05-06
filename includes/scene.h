@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:36:47 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 12:08:50 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 
 typedef struct s_scene
 {
-	t_list		*objects;
-	t_list		*cameras;
-	t_list		*light;
-	t_ambient	amb;
+	t_list			*objects;
+	t_list			*cameras;
+	t_list			*light;
+	t_ambient		amb;
+	t_wind			resolution;
+	enum e_exist	existance;
 }				t_scene;
 
 t_ray			get_ray(int x, int y, t_camera camera, t_wind winndow);
@@ -33,5 +35,6 @@ t_vec			normal_sphere(double t, t_ray ray, t_object object);
 t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			intensity(t_color color, double intensity);
 t_point			calc_point(t_ray ray, double t);
+t_scene			parser(char *str);
 
 #endif

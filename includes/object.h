@@ -6,14 +6,14 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:53:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:36:29 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:24:23 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
-# include "header_struct.h"
+# include "vector.h"
 
 typedef struct s_sphere
 {

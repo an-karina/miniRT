@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@pashalove.com>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:46:40 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 14:47:48 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:20:52 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 # include <stdlib.h>
+# include <fcntl.h>
 # include <unistd.h>
 
 typedef struct		s_list
@@ -59,5 +63,8 @@ void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
+char	*ft_strjoin_free(char *s1, char *s2);\
+int		find_new_line(char **string, char **line, int count);
+int		get_next_line(int fd, char **line);
 
 #endif

@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   header_fill.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:42:11 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/18 21:16:38 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:23:24 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_FILL_H
 # define HEADER_FILL_H
 
-# include "header_struct.h"
-# include "vector.h"
 # include "camera.h"
 
 t_wind		fill_wind(double height, double width);

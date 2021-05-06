@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:35:44 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 12:10:26 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 # define HEADER_STRUCT_H
 
 # include "../mlx/mlx.h"
+# include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>
 
 # define EPS 0.000000001
 
+enum	e_exist
+{
+	EXISTS,
+	DOES_NOT_EXIST
+};
+
 typedef struct s_window
 {
-	int			height;
-	int			width;
-}				t_wind;
+	int				height;
+	int				width;
+	enum e_exist	existance;
+
+}					t_wind;
 
 typedef struct s_point
 {
