@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 16:34:25 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 16:54:20 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ int	check_if_only_new_line(char *str)
 	return (1);
 }
 
-t_scene	fill_scene_null(void)
+t_scene	fill_scene_null(t_scene scene)
 {
-	t_scene	scene;
 
 	scene.existance = DOES_NOT_EXIST;
 	scene.resolution.existance = DOES_NOT_EXIST;
@@ -41,9 +40,9 @@ t_scene	parse_id(t_scene scene, char *str)
 	str = ft_is_space(str);
 	if (*str == 'R')
 		scene = parse_resolution(scene, str);
-	/*else if (*str == 'A')
-		scene = parse_ambient();
-	else if (*str == 'c')
+	else if (*str == 'A')
+		scene = parse_ambient(scene, str);
+	/*else if (*str == 'c')
 		parse_camera();
 	else if (*str == 'l')
 		parse_light();
@@ -68,7 +67,7 @@ t_scene	parser(char *file_name)
 	t_scene	scene;
 	char	*str;
 
-	scene = fill_scene_null();
+	scene = fill_scene_null(scene);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (scene);

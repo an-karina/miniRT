@@ -1,9 +1,10 @@
 SRCS		= srcs/fill_evrthg.c srcs/get_ray.c srcs/main.c vector_math/vector_func_1.c\
 				vector_math/vector_func_2.c vector_math/vector_func_3.c srcs/ray_trace.c\
-				srcs/r_g_b.c srcs/light.c srcs/normals.c parser/parser.c parser/parse_resolution.c
+				srcs/r_g_b.c srcs/light.c srcs/normals.c parser/parser.c parser/parse_resolution.c\
+				parser/parse_ambient.c
 
 INC			= includes/camera.h includes/header_fill.h includes/header_struct.h includes/vector.h\
-				includes/scene.h includes/solve_equation.h includes/light.h includes/parser.h
+				includes/scene.h includes/solve_equation.h includes/light.h includes/parser.h 
 
 OBJS		= $(SRCS:.c=.o)
 
