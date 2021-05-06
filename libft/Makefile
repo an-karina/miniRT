@@ -39,7 +39,7 @@ SRC		= ${SRCDIR}ft_memset.c \
 		  ${SRCDIR}get_next_line.c
 
 OBJ		= ${patsubst ${SRCDIR}%.c, ${OBJDIR}%.o, ${SRC}}
-CC		= gcc
+CC		= gcc -g
 CFLAGS	= -Wall -Wextra -Werror
 
 ${OBJDIR}%.o: ${SRCDIR}%.c

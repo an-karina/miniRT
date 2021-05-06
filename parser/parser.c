@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 17:04:19 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/06 20:28:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ t_scene	parser(char *file_name)
 		if (scene.existance != EXISTS)
 			return (scene);
 	}
+		scene = parse_id(scene, str);
+		if (scene.existance != EXISTS)
+			return (scene);
 	return (scene);
 }

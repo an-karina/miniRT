@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:36:21 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 17:35:56 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/07 00:16:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 double	ft_atod(char *str)
 {
 	double num;
+	double num_after_dot;
+	int length;
 
 	num = 0.0;
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	if (*str != '.' && *str != ' ')
-		return (0.0)
+	num = (double)ft_atoi(str);
+	str = str + num_length(num);
+	if (*str != '.')
+		return (num);
+	str++;
+	num_after_dot = (double)ft_atoi(str);
+	length = num_length(num_after_dot);
+	num_after_dot = num_after_dot / pow(10, length);
+	num = num + num_after_dot;
+	return (num);
 }
 
 t_scene	parse_ambient(t_scene scene, char *str)
@@ -34,6 +39,6 @@ t_scene	parse_ambient(t_scene scene, char *str)
 	str = ft_is_space(str);
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
-	scene.amb.intensity = ft_atod(scene, str);
+	scene.amb.intensity = ft_atod(str);
 	return (scene);
 }
