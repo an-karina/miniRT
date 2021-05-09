@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 12:10:26 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/08 17:01:04 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ typedef struct s_window
 
 typedef struct s_point
 {
-	double		x;
-	double		y;
-	double		z;
-}				t_point;
+	double			x;
+	double			y;
+	double			z;
+	enum e_exist	existance;
+}					t_point;
 
 typedef t_point	t_vec;
 

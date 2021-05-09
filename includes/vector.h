@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:21:17 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:40:32 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/08 17:00:49 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 typedef struct s_matrix
 {
-	t_vec	i;
-	t_vec	j;
-	t_vec	k;
-}			t_matrix;
+	t_vec			i;
+	t_vec			j;
+	t_vec			k;
+}					t_matrix;
 
 t_vec		vec_add(t_vec u, t_vec v);
 t_vec		vec_sub(t_vec u, t_vec v);

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 17:09:07 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/09 14:21:14 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,28 @@ int		check_name(char *str)
 	return (ft_strncmp(str + length - 3, ".rt", 3));
 }
 
-int				main(int argc, char *argv[])
+int				main(int argc, char **argv)
 {
-	t_camera	camera;
-	t_vec		view;
-	t_point		point_of_view;
-	t_wind		window;
-	void		*mlx;
-    void		*mlx_win;
-    t_data		img;
-	t_color 	color;
-	int			x;
-	int			y;
-	t_sphere	sphere;
-	t_sphere	sphere_1;
-	t_plane		plane;
-	t_object	object;
-	t_object	object_1;
-	t_object	object_plane;
+	// t_camera	camera;
+	// t_vec		view;
+	// t_point		point_of_view;
+	// t_wind		window;
+	// void		*mlx;
+    // void		*mlx_win;
+    // t_data		img;
+	// t_color 	color;
+	// int			x;
+	// int			y;
+	// t_sphere	sphere;
+	// t_sphere	sphere_1;
+	// t_plane		plane;
+	// t_object	object;
+	// t_object	object_1;
+	// t_object	object_plane;
 	t_scene		scene;
-	t_ambient	ambient;
-	t_light		light;
-	t_light		light_2;
+	// t_ambient	ambient;
+	// t_light		light;
+	// t_light		light_2;
 	int			fd;
 
 	if (argc > 3 || argc < 2 || check_name(argv[1]))
@@ -74,6 +74,8 @@ int				main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (-1);
 	}
+	printf("%f\n", ((t_camera *)scene.cameras->content)->fov);
+	
 	// window = fill_wind(950, 950);
 	// point_of_view = fill_point(0, 0, 0);
 	// view = fill_vector(0, 0, 1);
