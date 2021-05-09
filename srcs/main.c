@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/09 14:21:14 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/09 15:05:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int				main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	printf("%f\n", ((t_camera *)scene.cameras->content)->fov);
-	
 	// window = fill_wind(950, 950);
 	// point_of_view = fill_point(0, 0, 0);
 	// view = fill_vector(0, 0, 1);
