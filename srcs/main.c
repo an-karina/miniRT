@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 15:08:43 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 17:01:32 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-
+	//printf("Sphere:\n center (%lf)\n", ((t_sphere *)(((t_object *)(scene->objects->content))->shape))->r);
 	// printf("Camera:\n position (%lf, %lf, %lf)\n",((t_camera *)scene->cameras->content)->position.x,
 	// ((t_camera *)scene->cameras->content)->position.y, ((t_camera *)scene->cameras->content)->position.z);
 	// printf("Camera:\n position (%lf, %lf, %lf)\n",((t_camera *)scene->cameras->next->content)->position.x,

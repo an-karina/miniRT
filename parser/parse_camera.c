@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:43:19 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 13:39:00 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 18:52:30 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_norm_vec(t_vec vec)
 {
-	if (vec.x < 0.0 || vec.y < 0.0 || vec.z < 0.0)
+	if (vec.x < -1.0 || vec.y < -1.0 || vec.z < -1.0)
 		return (1);
 	if (vec.x > 1.0 || vec.y > 1.0 || vec.z > 1.0)
 		return (1);

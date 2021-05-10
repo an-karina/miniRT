@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 13:37:47 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 00:57:02 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,19 @@ void	parse_id(t_scene *scene, char *str)
 		parse_camera(scene, str);
 	else if (*str == 'l')
 		parse_light(scene, str);
-	/*else if (*str == 's' && *(str + 1) == 'p')
-		parse_sphere();
+	else if (*str == 's' && *(str + 1) == 'p')
+		parse_sphere(scene, str);
 	else if (*str == 'p' && *(str + 1) == 'l')
-		parse_plane();
+		parse_plane(scene, str);
 	else if (*str == 's' && *(str + 1) == 'q')
-		parse_square();
-	else if (*str == 'c' && *(str + 1) == 'y')
+		parse_square(scene, str);
+	/*else if (*str == 'c' && *(str + 1) == 'y')
 		parse_cylinder();
 	else if (*str == 't' && *(str + 1) == 'r')
 		parse_triangle();*/
 	else 
 		scene->existance = DOES_NOT_EXIST;
-	a = 0;
-	a++;
-		return ;
+	return ;
 }
 
 void	parser(char *file_name, t_scene *scene)
