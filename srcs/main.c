@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/09 15:05:35 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 12:34:55 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,8 @@ int				main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	// scene.resolution.existance = DOES_NOT_EXIST;
-	// scene.existance = DOES_NOT_EXIST;
-	// scene.amb.existance = DOES_NOT_EXIST;
 	scene = fill_scene_null(scene);
-	//printf("%s\n", argv[1]);
 	scene = parser(argv[1]);
-	//printf("%d | %d", scene.resolution.height, scene.resolution.width);
 	if (scene.existance == DOES_NOT_EXIST)
 	{
 		write(2, "Error\n", 6);

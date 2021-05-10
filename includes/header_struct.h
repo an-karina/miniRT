@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/08 17:01:04 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/09 15:43:13 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ typedef t_point	t_vec;
 
 typedef struct s_color
 {
-	int			r;
-	int			g;
-	int			b;
+	int				r;
+	int				g;
+	int				b;
+	enum e_exist	existance;
 }				t_color;
 
 typedef struct s_ray

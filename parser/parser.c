@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/09 15:01:08 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 12:33:29 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ t_scene	parse_id(t_scene scene, char *str)
 		scene = parse_ambient(scene, str);
 	else if (*str == 'c')
 		scene = parse_camera(scene, str);
-	/*else if (*str == 'l')
-		parse_light();
-	else if (*str == 's' && *(str + 1) == 'p')
+	else if (*str == 'l')
+		parse_light(scene, str);
+	/*else if (*str == 's' && *(str + 1) == 'p')
 		parse_sphere();
 	else if (*str == 'p' && *(str + 1) == 'l')
 		parse_plane();

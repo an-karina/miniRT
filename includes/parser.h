@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/08 16:22:24 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/09 21:15:44 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 t_scene	parse_resolution(t_scene scene, char *str);
 t_scene	parse_ambient(t_scene scene, char *str);
-t_scene	parse_camera(t_scene sceen, char *str);
-t_scene	parse_light();
+t_scene	parse_camera(t_scene scene, char *str);
+t_scene	parse_light(t_scene sceen, char *str);
 t_scene	parse_sphere();
 t_scene parse_plane();
 t_scene	parse_square();
@@ -33,5 +33,8 @@ int		num_length(int num);
 int		correct_input(char *str);
 double	ft_atod(char *str);
 int		double_length(char *str);
+t_vec	get_cordinates(char **str);
+t_scene	read_color(t_scene *scene, char **str);
+int		check_color(t_color color);
 
 #endif
