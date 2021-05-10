@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:43:19 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 12:53:23 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:39:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,38 +65,7 @@ t_vec	get_cordinates(char **str)
 	return (vec);
 }
 
-// t_scene	parse_camera(t_scene scene, char *str)
-// {
-// 	t_camera camera;
-
-// 	str++;
-// 	ft_is_space(&str);
-// 	camera.existance = EXISTS;
-// 	camera.position = (t_point)get_cordinates(&str);
-// 	if (camera.position.existance != EXISTS)
-// 		return (fill_scene_null(scene));
-// 	camera.view.existance = EXISTS;
-// 	camera.view = get_cordinates(&str);
-// 	if (camera.view.existance != EXISTS)
-// 		return (fill_scene_null(scene));
-// 	if (check_norm_vec(camera.view))
-// 		return (fill_scene_null(scene));
-// 	if (!correct_input(str))
-// 		return (fill_scene_null(scene));
-// 	camera.fov = ft_atod(str);
-// 	str += double_length(str);
-// 	ft_is_space(&str);
-// 	if (*str != '\0')
-// 		return (fill_scene_null(scene));
-// 	if (scene.cameras == NULL)
-// 		scene.cameras = ft_lstnew(&camera);
-// 	else
-// 		ft_lstadd_front(&(scene.cameras), ft_lstnew(&camera));
-// 	scene.existance = EXISTS;
-// 	return (scene);
-// }
-
-t_scene parse_camera(t_scene scene, char *str)
+void	parse_camera(t_scene *scene, char *str)
 {
  	t_camera *camera;
 
@@ -125,9 +94,10 @@ t_scene parse_camera(t_scene scene, char *str)
  	ft_is_space(&str);
  	if (*str != '\0')
  		return (fill_scene_null(scene));
- 	if (scene.cameras == NULL)
- 		scene.cameras = ft_lstnew(camera);
+ 	if (scene->cameras == NULL)
+ 		scene->cameras = ft_lstnew(camera);
  	else
- 		ft_lstadd_front(&(scene.cameras), ft_lstnew(camera));
- 	return (scene.existance = EXISTS, scene);
+ 		ft_lstadd_front(&(scene->cameras), ft_lstnew(camera));
+	scene->existance = EXISTS;
+ 	return ;
 }

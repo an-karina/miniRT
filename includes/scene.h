@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/06 12:08:50 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:36:33 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ t_vec			normal_sphere(double t, t_ray ray, t_object object);
 t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			intensity(t_color color, double intensity);
 t_point			calc_point(t_ray ray, double t);
-t_scene			parser(char *str);
 
 #endif

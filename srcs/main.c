@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 12:34:55 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 15:08:43 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				main(int argc, char **argv)
 	// t_object	object;
 	// t_object	object_1;
 	// t_object	object_plane;
-	t_scene		scene;
+	t_scene		*scene;
 	// t_ambient	ambient;
 	// t_light		light;
 	// t_light		light_2;
@@ -62,13 +62,21 @@ int				main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	scene = fill_scene_null(scene);
-	scene = parser(argv[1]);
-	if (scene.existance == DOES_NOT_EXIST)
+	scene = (t_scene *)malloc(sizeof(t_scene));
+	fill_scene_null(scene);
+	parser(argv[1], scene);
+	if (scene->existance == DOES_NOT_EXIST)
 	{
 		write(2, "Error\n", 6);
 		return (-1);
 	}
+
+	// printf("Camera:\n position (%lf, %lf, %lf)\n",((t_camera *)scene->cameras->content)->position.x,
+	// ((t_camera *)scene->cameras->content)->position.y, ((t_camera *)scene->cameras->content)->position.z);
+	// printf("Camera:\n position (%lf, %lf, %lf)\n",((t_camera *)scene->cameras->next->content)->position.x,
+	// ((t_camera *)scene->cameras->next->content)->position.y, ((t_camera *)scene->cameras->next->content)->position.z);
+	// printf("Light:\n center (%lf, %lf, %lf)\n",((t_light *)scene->light->content)->center.x,
+	// ((t_light *)scene->light->content)->center.y, ((t_light *)scene->light->content)->center.z);
 	// window = fill_wind(950, 950);
 	// point_of_view = fill_point(0, 0, 0);
 	// view = fill_vector(0, 0, 1);

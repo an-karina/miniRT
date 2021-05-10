@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:14:04 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 12:55:02 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 14:53:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_color	get_color(char **str)
 	return (color);
 }
 
-t_scene	parse_light(t_scene scene, char *str)
+void	parse_light(t_scene *scene, char *str)
 {
 	t_light	*light;
 	
@@ -79,9 +79,10 @@ t_scene	parse_light(t_scene scene, char *str)
 	ft_is_space(&str);
 	if (*str != '\0')
  		return (fill_scene_null(scene));
-	if (scene.light == NULL)
- 		scene.light = ft_lstnew(light);
+	if (scene->light == NULL)
+ 		scene->light = ft_lstnew(light);
  	else
- 		ft_lstadd_front(&(scene.light), ft_lstnew(light));
-	return (scene.existance = EXISTS, scene);
+ 		ft_lstadd_front(&(scene->light), ft_lstnew(light));
+	scene->existance = EXISTS;
+	return ;
 }

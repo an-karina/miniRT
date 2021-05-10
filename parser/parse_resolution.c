@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:23 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/08 18:49:59 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:12:54 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,27 @@ int		check_resolution(t_wind resolution)
 	return (0);
 }
 
-t_scene	parse_resolution(t_scene scene, char *str)
+void	parse_resolution(t_scene *scene, char *str)
 {
-	if (scene.resolution.existance == EXISTS)
+	if (scene->resolution.existance == EXISTS)
 		return (fill_scene_null(scene));
 	str++;
 	ft_is_space(&str);
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
-	scene.resolution.width = ft_atoi(str);
-	str += num_length(scene.resolution.width);
+	scene->resolution.width = ft_atoi(str);
+	str += num_length(scene->resolution.width);
 	ft_is_space(&str);
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
-	scene.resolution.height = ft_atoi(str);
-	str += num_length(scene.resolution.height);
+	scene->resolution.height = ft_atoi(str);
+	str += num_length(scene->resolution.height);
 	ft_is_space(&str);
-	if (check_resolution(scene.resolution))
+	if (check_resolution(scene->resolution))
 		return (fill_scene_null(scene));
 	if (*str != '\0')
 		return (fill_scene_null(scene));
-	scene.resolution.existance = EXISTS;
-	scene.existance = EXISTS;
-	return (scene);
+	scene->resolution.existance = EXISTS;
+	scene->existance = EXISTS;
+	return ;
 }
