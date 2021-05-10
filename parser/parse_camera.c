@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:43:19 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 12:39:58 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/10 12:53:23 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ t_scene parse_camera(t_scene scene, char *str)
  	if (camera->position.existance != EXISTS)
  		return (fill_scene_null(scene));
  	camera->view.existance = EXISTS;
+	if (!correct_input(str))
+		return (fill_scene_null(scene));
  	camera->view = get_cordinates(&str);
  	if (camera->view.existance != EXISTS)
  		return (fill_scene_null(scene));
