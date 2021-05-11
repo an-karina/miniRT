@@ -6,19 +6,18 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 09:23:00 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 11:25:17 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdio.h>
 
-char	**ft_is_space(char **str)
+void	ft_is_space(char **str)
 {
 	while (**str == ' '|| (**str == '\t') || (**str == '\r') ||
 			(**str == '\v') || (**str == '\n') || (**str == '\f'))
 		(*str)++;
-	return (str);
 }
 
 int	check_if_only_new_line(char *str)
@@ -62,8 +61,8 @@ void	parse_id(t_scene *scene, char *str)
 		parse_square(scene, str);
 	else if (*str == 'c' && *(str + 1) == 'y')
 		parse_cylinder(scene, str);
-	//else if (*str == 't' && *(str + 1) == 'r')
-		//parse_triangle(scene, str);
+	else if (*str == 't' && *(str + 1) == 'r')
+		parse_triangle(scene, str);
 	else 
 		scene->existance = DOES_NOT_EXIST;
 	return ;

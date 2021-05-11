@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:07:28 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 09:07:25 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 11:29:34 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double			solve_equation_triangle(t_object *object, t_ray ray);
 t_vec			normal_sphere(double t, t_ray ray, t_object object);
 t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			normal_square(double t, t_ray ray, t_object object);
-t_vec			normal_triangle(double t, t_ray ray, t_object object);
 t_vec			normal_cylinder(double t, t_ray ray, t_object object);
+t_vec			normal_triangle(double t, t_ray ray, t_object object);
 
 #endif
