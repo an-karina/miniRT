@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 00:57:02 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 09:23:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	fill_scene_null(t_scene *scene)
 
 void	parse_id(t_scene *scene, char *str)
 {
-	int a;
-	
+
 	ft_is_space(&str);
 	if (*str == '\0')
 		return ;
@@ -51,7 +50,7 @@ void	parse_id(t_scene *scene, char *str)
 		parse_resolution(scene, str);
 	else if (*str == 'A')
 		parse_ambient(scene, str);
-	else if (*str == 'c')
+	else if (*str == 'c' && *(str + 1) != 'y')
 		parse_camera(scene, str);
 	else if (*str == 'l')
 		parse_light(scene, str);
@@ -61,10 +60,10 @@ void	parse_id(t_scene *scene, char *str)
 		parse_plane(scene, str);
 	else if (*str == 's' && *(str + 1) == 'q')
 		parse_square(scene, str);
-	/*else if (*str == 'c' && *(str + 1) == 'y')
-		parse_cylinder();
-	else if (*str == 't' && *(str + 1) == 'r')
-		parse_triangle();*/
+	else if (*str == 'c' && *(str + 1) == 'y')
+		parse_cylinder(scene, str);
+	//else if (*str == 't' && *(str + 1) == 'r')
+		//parse_triangle(scene, str);
 	else 
 		scene->existance = DOES_NOT_EXIST;
 	return ;

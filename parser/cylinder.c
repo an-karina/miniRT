@@ -1,40 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.c                                            :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 17:01:47 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 09:17:37 by jhleena          ###   ########.fr       */
+/*   Created: 2021/05/11 08:44:49 by jhleena           #+#    #+#             */
+/*   Updated: 2021/05/11 09:23:06 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	parse_plane(t_scene *scene, char *str)
+void	parse_cylinder(t_scene *scene, char *str)
 {
-	t_plane		*plane;
 	t_object	*object;
+	t_cylinder	*cylinder;
 
 	str += 2;
 	ft_is_space(&str);
-	if (!(plane = (t_plane *)malloc(sizeof(t_plane))))
-		return (fill_scene_null(scene));
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
-	plane->p.existance = EXISTS;
-	plane->p = get_cordinates(&str);
-	if (plane->p.existance != EXISTS)
+	if (!(cylinder = (t_cylinder *)malloc(sizeof(t_cylinder))))
 		return (fill_scene_null(scene));
+	cylinder->center.existance = EXISTS;
+	cylinder->center = (t_point)get_cordinates(&str);
+	if (cylinder->center.existance != EXISTS)
+		return (fill_scene_null(scene));
+
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
-	plane->norm.existance = EXISTS;
-	plane->norm = (t_vec)get_cordinates(&str);
-	if (plane->norm.existance != EXISTS)
+	cylinder->norm.existance = EXISTS;
+	cylinder->norm = get_cordinates(&str);
+	if (cylinder->norm.existance != EXISTS)
 		return (fill_scene_null(scene));
-	if (check_norm_vec(plane->norm))
+	
+	if (!correct_input(str))
 		return (fill_scene_null(scene));
+	cylinder->d = ft_atod(str);
+	str += double_length(str);
+	ft_is_space(&str);
+
+	if (!correct_input(str))
+		return (fill_scene_null(scene));
+	cylinder->height = ft_atod(str);
+	str += double_length(str);
+	ft_is_space(&str);
+
 	if (!correct_input(str))
 		return (fill_scene_null(scene));
 	if (!(object = (t_object *)malloc(sizeof(t_object))))
@@ -43,11 +55,9 @@ void	parse_plane(t_scene *scene, char *str)
 	object->color = get_color(&str);
 	if (object->color.existance != EXISTS)
 		return (fill_scene_null(scene));
-	if (*str != '\0')
-		return (fill_scene_null(scene));
-	object->shape = plane;
-	object->intersection = &solve_equation_plane;
-	object->norm = &normal_plane;
+	object->intersection = &solve_equation_cylinder;
+	object->norm = &normal_cylinder;
+	object->shape = cylinder;
 	if (scene->objects == NULL)
 		scene->objects = ft_lstnew(object);
 	else

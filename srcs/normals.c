@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 15:43:46 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 01:09:55 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 08:43:30 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ t_vec	normal_plane(double t, t_ray ray, t_object object)
 }
 
 t_vec			normal_square(double t, t_ray ray, t_object object)
+{
+	return ((t_vec){0.0, 0.0, 0.0});
+}
+
+t_vec			normal_cylinder(double t, t_ray ray, t_object object)
+{
+	return ((t_vec){0.0, 0.0, 0.0});
+}
+
+t_vec			normal_trinagle(double t, t_ray ray, t_object object)
 {
 	return ((t_vec){0.0, 0.0, 0.0});
 }

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 01:08:47 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 08:42:28 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,17 @@ double	solve_equation_plane(t_object *object, t_ray ray)
 
 double	solve_equation_square(t_object *object, t_ray ray)
 {
-	return (0.0);
+	return (-1);
+}
+
+double	solve_equation_cylinder(t_object *object, t_ray ray)
+{
+	return (-1);
+}
+
+double	solve_equation_triangle(t_object *object, t_ray ray)
+{
+	return (-1);
 }
 
 t_color	ray_trace(t_ray ray, t_scene scene)

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 22:53:24 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/11 09:21:13 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_light(t_scene *scene, char *str);
 void	parse_sphere(t_scene *scene, char *str);
 void	parse_plane(t_scene *scene, char *str);
 void	parse_square(t_scene *scene, char *str);
-t_scene	parse_cylinder();
+void	parse_cylinder(t_scene *scene, char *str);
 t_scene	parse_triangle();
 void	parse_id(t_scene *scene, char *str);
 void	parser(char *file_name, t_scene *scene);
