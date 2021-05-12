@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:43:19 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 18:52:30 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/12 09:15:57 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	check_norm_vec(t_vec vec)
 
 double	one_coordinate(t_vec *vec, char **str)
 {
-	double num;
-	 
+	double	num;
+
 	if (!correct_input(*str))
 	{
 		vec->existance = DOES_NOT_EXIST;
@@ -45,7 +45,7 @@ double	one_coordinate(t_vec *vec, char **str)
 
 t_vec	get_cordinates(char **str)
 {
-	t_vec vec;
+	t_vec	vec;
 
 	vec.existance = EXISTS;
 	vec.x = one_coordinate(&vec, str);
@@ -65,39 +65,41 @@ t_vec	get_cordinates(char **str)
 	return (vec);
 }
 
+int	get_camera(t_camera *camera, char **str)
+{
+	if (!correct_input(*str))
+		return (1);
+	camera->position = (t_point)get_cordinates(str);
+	if (camera->position.existance != EXISTS)
+		return (1);
+	if (!correct_input(*str))
+		return (1);
+	camera->view = get_cordinates(str);
+	if (camera->view.existance != EXISTS)
+		return (1);
+	if (check_norm_vec(camera->view))
+		return (1);
+	if (!correct_input(*str))
+		return (1);
+	camera->fov = ft_atod(*str);
+	*str += double_length(*str);
+	ft_is_space(str);
+	return (0);
+}
+
 void	parse_camera(t_scene *scene, char *str)
 {
- 	t_camera *camera;
+	t_camera	*camera;
 
-	if (!(camera = (t_camera *)malloc(sizeof(t_camera))))
+	++str;
+	ft_is_space(&str);
+	camera = (t_camera *)malloc(sizeof(t_camera));
+	if (!camera)
 		return (fill_scene_null(scene));
- 	++str;
- 	ft_is_space(&str);
- 	camera->existance = EXISTS;
-	if (!correct_input(str))
+	if (get_camera(camera, &str))
 		return (fill_scene_null(scene));
- 	camera->position = (t_point)get_cordinates(&str);
- 	if (camera->position.existance != EXISTS)
- 		return (fill_scene_null(scene));
- 	camera->view.existance = EXISTS;
-	if (!correct_input(str))
+	if (*str != '\0')
 		return (fill_scene_null(scene));
- 	camera->view = get_cordinates(&str);
- 	if (camera->view.existance != EXISTS)
- 		return (fill_scene_null(scene));
- 	if (check_norm_vec(camera->view))
- 		return (fill_scene_null(scene));
- 	if (!correct_input(str))
- 		return (fill_scene_null(scene));
- 	camera->fov = ft_atod(str);
- 	str += double_length(str);
- 	ft_is_space(&str);
- 	if (*str != '\0')
- 		return (fill_scene_null(scene));
- 	if (scene->cameras == NULL)
- 		scene->cameras = ft_lstnew(camera);
- 	else
- 		ft_lstadd_front(&(scene->cameras), ft_lstnew(camera));
+	ft_lstadd_front(&(scene->cameras), ft_lstnew(camera));
 	scene->existance = EXISTS;
- 	return ;
 }

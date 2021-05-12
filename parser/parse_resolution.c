@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:23 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 13:12:54 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/12 09:23:16 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	correct_input(char *str)
 {
-
 	if (*str == '-' || *str == '+')
 		++str;
 	if (*str <= '9' && *str >= '0')
@@ -24,14 +23,14 @@ int	correct_input(char *str)
 
 int	num_length(int num)
 {
-	int	length;
-	long long num_2;
+	int			length;
+	long long	num_2;
 
 	length = 0;
 	num_2 = (long long)num;
 	if (num_2 == 0)
 		length++;
-	if (num_2< 0)
+	if (num_2 < 0)
 	{
 		length++;
 		num_2 = num_2 * (-1);
@@ -44,7 +43,7 @@ int	num_length(int num)
 	return (length);
 }
 
-int		check_resolution(t_wind resolution)
+int	check_resolution(t_wind resolution)
 {
 	if (resolution.width > 2560 || resolution.height > 1600)
 		return (1);

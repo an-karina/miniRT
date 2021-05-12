@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/12 00:12:40 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/12 09:25:15 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_is_space(char **str)
 {
-	while (**str == ' '|| (**str == '\t') || (**str == '\r') ||
-			(**str == '\v') || (**str == '\n') || (**str == '\f'))
+	while (**str == ' ' || (**str == '\t') || (**str == '\r')
+		|| (**str == '\v') || (**str == '\n') || (**str == '\f'))
 		(*str)++;
 }
 
@@ -29,7 +29,6 @@ int	check_if_only_new_line(char *str)
 
 void	fill_scene_null(t_scene *scene)
 {
-
 	scene->existance = DOES_NOT_EXIST;
 	scene->resolution.existance = DOES_NOT_EXIST;
 	scene->amb.existance = DOES_NOT_EXIST;
@@ -41,7 +40,6 @@ void	fill_scene_null(t_scene *scene)
 
 void	parse_id(t_scene *scene, char *str)
 {
-
 	ft_is_space(&str);
 	if (*str == '\0')
 		return ;
@@ -63,7 +61,7 @@ void	parse_id(t_scene *scene, char *str)
 		parse_cylinder(scene, str);
 	else if (*str == 't' && *(str + 1) == 'r')
 		parse_triangle(scene, str);
-	else 
+	else
 		scene->existance = DOES_NOT_EXIST;
 	return ;
 }

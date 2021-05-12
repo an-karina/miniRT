@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:01:47 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 09:17:37 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/12 09:26:03 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	parse_plane(t_scene *scene, char *str)
 	object->shape = plane;
 	object->intersection = &solve_equation_plane;
 	object->norm = &normal_plane;
-	if (scene->objects == NULL)
-		scene->objects = ft_lstnew(object);
-	else
-		ft_lstadd_front(&(scene->objects), ft_lstnew(object));
+	ft_lstadd_front(&(scene->objects), ft_lstnew(object));
 	scene->existance = EXISTS;
 	return ;
 }
