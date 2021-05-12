@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:36:21 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 13:38:27 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/12 08:39:43 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 double	ft_atod(char *str)
 {
-	double 	num;
-	double 	num_after_dot;
+	double	num;
+	double	num_after_dot;
 	double	pow_num;
-	int 	length;
+	int		length;
 
 	num = 0.0;
 	num = (double)ft_atoi(str);
@@ -35,7 +35,7 @@ double	ft_atod(char *str)
 
 int	double_length(char *str)
 {
-	int length;
+	int	length;
 
 	length = 0;
 	if (*str == '-' || *str == '+')
@@ -72,7 +72,7 @@ int	check_color(t_color color)
 void	parse_ambient(t_scene *scene, char *str)
 {
 	t_color	color;
-	
+
 	if (scene->amb.existance == EXISTS)
 		return (fill_scene_null(scene));
 	str++;
