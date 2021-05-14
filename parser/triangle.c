@@ -6,13 +6,13 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 08:44:42 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 11:30:41 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/14 20:07:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int		get_side(t_triangle *triangle, char **str)
+int	get_side(t_triangle *triangle, char **str)
 {
 	if (!correct_input(*str))
 		return (1);
@@ -62,10 +62,7 @@ void	parse_triangle(t_scene *scene, char *str)
 	object->intersection = &solve_equation_triangle;
 	object->norm = &normal_triangle;
 	object->shape = triangle;
-	if (scene->objects == NULL)
-		scene->objects = ft_lstnew(object);
-	else
-		ft_lstadd_front(&(scene->objects), ft_lstnew(object));
+	ft_lstadd_front(&(scene->objects), ft_lstnew(object));
 	scene->existance = EXISTS;
 	return ;
 }

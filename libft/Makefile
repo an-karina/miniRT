@@ -37,7 +37,8 @@ SRC		= ${SRCDIR}ft_memset.c \
 		  ${SRCDIR}ft_split.c \
 		  ${SRCDIR}ft_lstnew.c \
 		  ${SRCDIR}ft_lstadd_front.c \
-		  ${SRCDIR}get_next_line.c
+		  ${SRCDIR}get_next_line.c \
+		  ${SRCDIR}ft_free_list.c
 
 OBJ		= ${patsubst ${SRCDIR}%.c, ${OBJDIR}%.o, ${SRC}}
 CC		= gcc -g

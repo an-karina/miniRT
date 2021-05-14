@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_free_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/06 18:05:19 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/14 19:02:04 by jhleena          ###   ########.fr       */
+/*   Created: 2021/05/14 19:17:03 by jhleena           #+#    #+#             */
+/*   Updated: 2021/05/14 19:32:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include	"libft.h"
 
-int	ft_isalpha(int c)
+void	ft_free_list(t_list **lst)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
+	t_list *tmp;
+
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next; 
+		free(tmp->content);
+		free(tmp);
+	}
 }

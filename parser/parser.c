@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/12 09:25:15 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/14 19:37:07 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void	fill_scene_null(t_scene *scene)
 	scene->existance = DOES_NOT_EXIST;
 	scene->resolution.existance = DOES_NOT_EXIST;
 	scene->amb.existance = DOES_NOT_EXIST;
-	scene->cameras = NULL;
-	scene->light = NULL;
-	scene->objects = NULL;
+	if (scene->cameras != NULL)
+		ft_free_list(&(scene->cameras));
+	if (scene->light != NULL)
+		ft_free_list(&(scene->light));
+	if (scene->objects != NULL)
+		ft_free_list(&(scene->objects));
 	return ;
 }
 

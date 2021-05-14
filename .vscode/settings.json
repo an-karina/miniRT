@@ -8,6 +8,8 @@
 		"header_fill.h": "c",
 		"solve_equation.h": "c",
 		"light.h": "c",
-		"parser.h": "c"
+		"parser.h": "c",
+		"header_struct.h": "c",
+		"__locale": "c"
 	}
 }

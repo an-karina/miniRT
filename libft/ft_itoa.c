@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 17:14:51 by jhleena           #+#    #+#             */
-/*   Updated: 2020/11/09 20:53:31 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/14 19:13:25 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		num_len(unsigned int n)
+static int	num_len(unsigned int n)
 {
 	int	i;
 
@@ -27,16 +27,20 @@ static int		num_len(unsigned int n)
 	return (i);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	num;
 	int		sign;
 	int		len;
 	char	*p;
 
-	num = (n < 0) ? ((long)n * -1) : (n);
+	num = n;
+	if (n < 0)
+		num = (long)n * -1;
 	len = num_len(num);
-	sign = (n < 0) ? (1) : (0);
+	sign = 0;
+	if (n < 0)
+		sign++;
 	p = (char *)malloc(sizeof(char) * (len + sign + 1));
 	if (p)
 	{

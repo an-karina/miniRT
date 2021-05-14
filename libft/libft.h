@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:46:40 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 17:20:52 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/14 20:00:41 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 char	*ft_strjoin_free(char *s1, char *s2);\
 int		find_new_line(char **string, char **line, int count);
 int		get_next_line(int fd, char **line);
+void	ft_free_list(t_list **lst);
 
 #endif
