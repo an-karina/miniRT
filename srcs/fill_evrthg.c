@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/04 11:42:21 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/15 12:53:53 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,19 @@ t_camera	fill_camera(t_point p_view, t_vec view, double fov, t_wind window)
 	camera.base.i = vec_norm(vec_cross(z, camera.base.k));
 	camera.base.j = vec_cross(camera.base.i, camera.base.k);
 	return (camera);
+}
+
+void	camera_base(t_camera *camera, t_wind window)
+{
+	t_vec		z;
+
+	camera->base = (t_matrix){fill_vector(0,0,0), fill_vector(0,0,0), fill_vector(0,0,0)};
+	camera->distance = (window.width / 2) * (tan(camera->fov / 2));
+	z = fill_vector(0, 0, 1);
+	if (is_null_vec(vec_cross(camera->view, z)))
+		z = fill_vector(0, 1, 0);
+	camera->base.k = vec_norm(camera->view);
+	camera->base.i = vec_norm(vec_cross(z, camera->base.k));
+	camera->base.j = vec_cross(camera->base.i, camera->base.k);
+	return ;
 }

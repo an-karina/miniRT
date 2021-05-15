@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/14 20:23:10 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/15 12:52:21 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int	main(int argc, char **argv)
 								&img.endian);
 	x = 0;
 	y = 0;
-
+	
+	camera_base((t_camera *)scene->cameras->content, scene->resolution);
 	while (y <  scene->resolution.height)
 	{
 		x = 0;
