@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 15:43:46 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 11:34:44 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/16 14:51:32 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ t_vec	normal_plane(double t, t_ray ray, t_object object)
 
 t_vec			normal_square(double t, t_ray ray, t_object object)
 {
-	return ((t_vec){0.0, 0.0, 0.0});
+	t_square	*square;
+
+	square = (t_square *)object.shape;
+	if (vec_dot(ray.direction, square->norm) > 0)
+		return (vec_mul(square->norm, -1));
+	return (square->norm);
 }
 
 t_vec			normal_cylinder(double t, t_ray ray, t_object object)

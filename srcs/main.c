@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/15 12:52:21 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/15 17:57:49 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,18 @@ int	check_name(char *str)
 	return (ft_strncmp(str + length - 3, ".rt", 3));
 }
 
-// int	check_map_correct(t_scene *scene)
-// {
-// 	if (scene->resolution )
-// }
+int	check_map_correct(t_scene *scene)
+{
+	if (scene->resolution.existance != EXISTS)
+		return (1);
+	if (scene->amb.existance != EXISTS)
+		return (1);
+	if (scene->cameras == NULL)
+		return (1);
+	if (scene->objects == NULL)
+		return (1);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -61,12 +69,8 @@ int	main(int argc, char **argv)
 	scene->light = NULL;
 	scene->objects = NULL;
 	parser(argv[1], scene);
-	// if (check_map_correct(scene))
-	// {
-	// 	fill_scene_null(scene);
-	// 	write(2, "Error\nMap is incorrect\n", 23);
-	// 	return (-1);
-	// }
+	if (check_map_correct(scene))
+		fill_scene_null(scene);
 	if (scene->existance == DOES_NOT_EXIST)
 	{
 		fill_scene_null(scene);
@@ -97,7 +101,6 @@ int	main(int argc, char **argv)
 		{
 			color = ray_trace(get_ray(x, y, *((t_camera *)scene->cameras->content), scene->resolution), *scene);
 			my_mlx_pixel_put(&img, x, y, rgb_to_int(color));
-			//printf("x = %d | y = %d | color = %d\n", x, y, rgb_to_int(color));
 			x++;
 		}
 		y++;

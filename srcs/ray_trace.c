@@ -6,14 +6,13 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 08:42:28 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/15 18:04:10 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_struct.h"
 #include "scene.h"
 #include "solve_equation.h"
-#include "object.h"
 
 double	discriminant(double a, double b, double c)
 {
@@ -55,11 +54,6 @@ double	solve_equation_plane(t_object *object, t_ray ray)
 	else
 		return (-1);
 	return (t);
-}
-
-double	solve_equation_square(t_object *object, t_ray ray)
-{
-	return (-1);
 }
 
 double	solve_equation_cylinder(t_object *object, t_ray ray)
