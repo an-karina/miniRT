@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:53:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 22:45:26 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/18 14:35:01 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_triangle
 	t_point		first_p;
 	t_point		second_p;
 	t_point		third_p;
+	t_vec		edge_fs;
+	t_vec		edge_ft;
+	t_vec		norm;
 }				t_triangle;
 
 typedef struct s_object

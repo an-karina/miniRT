@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 15:43:46 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/16 14:51:32 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:43:51 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,10 @@ t_vec			normal_cylinder(double t, t_ray ray, t_object object)
 
 t_vec			normal_triangle(double t, t_ray ray, t_object object)
 {
-	return ((t_vec){0.0, 0.0, 0.0});
+	t_triangle	*triangle;
+
+	triangle = (t_triangle *)object.shape;
+	if (vec_dot(ray.direction, triangle->norm) > 0)
+		return (vec_mul(triangle->norm, -1));
+	return (triangle->norm);
 }

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/15 18:04:10 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/19 15:01:15 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,11 @@ double	solve_equation_plane(t_object *object, t_ray ray)
 
 	plane = (t_plane *)(object->shape);
 	t = vec_dot(vec_sub((t_vec)((plane)->p), (t_vec)ray.point), (plane)->norm);
-	if (vec_dot(ray.direction, (plane)->norm) > 0.000000001)
+	if (vec_dot(ray.direction, (plane)->norm) != 0)
 		t = t / (vec_dot(ray.direction, (plane)->norm));
 	else
 		return (-1);
 	return (t);
-}
-
-double	solve_equation_cylinder(t_object *object, t_ray ray)
-{
-	return (-1);
-}
-
-double	solve_equation_triangle(t_object *object, t_ray ray)
-{
-	return (-1);
 }
 
 t_color	ray_trace(t_ray ray, t_scene scene)
