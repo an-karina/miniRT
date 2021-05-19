@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:59:39 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/19 19:33:38 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/20 01:01:55 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,12 @@ double			solve_equation_cylinder(t_object *object, t_ray ray)
 	double		h;
 
 	cylinder = (t_cylinder *)object->shape;
+	co = vec_sub((t_vec)ray.point, (t_vec)cylinder->center);
 	coeff.a = vec_dot(cylinder->norm, ray.direction);
-	coeff.a = vec_dot(ray.direction, ray.direction) - coeff.a * coeff.a;
-	co = vec_sub(ray.point, cylinder->center);
-	coeff.b = vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, ray.direction);
-	coeff.b = 2 * (vec_dot(co, ray.direction) - coeff.b);
-	coeff.c = vec_dot(cylinder->norm, co);
-	coeff.c = vec_dot(co,co) - coeff.c * coeff.c - (cylinder->d * cylinder->d / 4);
+	coeff.a = vec_dot(ray.direction, ray.direction) - 
+				vec_dot(cylinder->norm, ray.direction) * vec_dot(cylinder->norm, ray.direction);
+	coeff.b = 2 * (vec_dot(co, ray.direction) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, ray.direction));
+	coeff.c = vec_dot(co,co) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, co) - (cylinder->d * cylinder->d / 4);
 	disc = discriminant(coeff.a, coeff.b, coeff.c);
 	if (disc < 0)
 		return (-1);
