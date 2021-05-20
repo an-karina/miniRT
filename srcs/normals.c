@@ -6,13 +6,15 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 15:43:46 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/19 12:43:51 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/20 23:16:30 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_struct.h"
 #include "vector.h"
 #include "object.h"
+#include "scene.h"
+#include <stdio.h>
 
 t_vec	normal_sphere(double t, t_ray ray, t_object object)
 {
@@ -50,7 +52,22 @@ t_vec			normal_square(double t, t_ray ray, t_object object)
 
 t_vec			normal_cylinder(double t, t_ray ray, t_object object)
 {
-	return ((t_vec){0.0, 0.0, 0.0});
+	t_cylinder	*cylinder;
+	t_vec		norm;
+	t_vec		po;
+	t_vec		vec;
+
+	po =  vec_sub((t_vec)calc_point(ray, t), (t_vec)cylinder->center);
+	vec = vec_cross(po, cylinder->norm);
+	norm = vec_norm(vec_cross(vec, cylinder->norm));
+	//printf("|%lf, %lf, %lf|\n", norm.x, norm.y, norm.z);
+	//printf("|%lf, %lf, %lf|\n", ray.direction.x, ray.direction.y, ray.direction.z);
+	//printf("|%lf, %lf, %lf|\n", po.x, po.y, po.z);
+	//printf("|%lf, %lf, %lf|\n", vec.x, vec.y, vec.z);
+	printf("|%lf, %lf, %lf|\n", cylinder->norm.x, cylinder->norm.y, cylinder->norm.z);
+	//if (vec_dot(ray.direction, norm) > 0)
+	//	return (vec_mul(norm, -1));
+	return (norm);
 }
 
 t_vec			normal_triangle(double t, t_ray ray, t_object object)

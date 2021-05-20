@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:20:50 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 00:45:34 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/20 20:06:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,12 @@ t_vec	lightcolor(t_light *light, t_vec point, t_vec norm)
 	t_vec		light_intes;
 	double		dot;
 
+	light_intes = (t_vec){0, 0, 0};
 	light_dir = vec_norm(vec_sub((t_vec)(light->center), point));
 	light_intes = mul_intens_color(light->color, light->intensity);
 	dot = vec_dot(norm, light_dir);
 	if (dot > 0)
 		light_intes = vec_mul(light_intes, dot);
-	else
-		light_intes = (t_vec){0, 0, 0};
 	return (light_intes);
 }
 
@@ -89,11 +88,11 @@ t_color	lightnig(double t, t_ray ray, t_object *obj, t_scene scene)
 	{
 		light_intes = (t_vec){0, 0, 0};
 		light = (t_light *)((scene.light)->content);
-		if (!shadow(point, light->center, scene))
-		{
+		// if (!shadow(point, light->center, scene))
+		// {
 			light_intes = lightcolor(light, point, ((*obj).norm)(t, ray, *obj));
 			sum_of_lights = vec_add(sum_of_lights, light_intes);
-		}
+		// }
 		scene.light = (scene.light)->next;
 	}
 	color = mul_intens_color(scene.amb.color, scene.amb.intensity);

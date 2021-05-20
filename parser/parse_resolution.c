@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:23 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/12 09:23:16 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/20 15:43:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ int	num_length(int num)
 	return (length);
 }
 
-int	check_resolution(t_wind resolution)
+int	check_resolution(t_wind *resolution)
 {
-	if (resolution.width > 2560 || resolution.height > 1600)
-		return (1);
-	if (resolution.width < 1 || resolution.height < 1)
+	if (resolution->width > 2560 || resolution->height > 1440)
+	{
+		resolution->width = 2560;
+		resolution->height = 1395;
+	}
+	if (resolution->width < 1 || resolution->height < 1)
 		return (1);
 	return (0);
 }
@@ -68,7 +71,7 @@ void	parse_resolution(t_scene *scene, char *str)
 	scene->resolution.height = ft_atoi(str);
 	str += num_length(scene->resolution.height);
 	ft_is_space(&str);
-	if (check_resolution(scene->resolution))
+	if (check_resolution(&scene->resolution))
 		return (fill_scene_null(scene));
 	if (*str != '\0')
 		return (fill_scene_null(scene));
