@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 15:43:46 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 23:16:30 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/20 23:34:08 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,12 @@ t_vec			normal_cylinder(double t, t_ray ray, t_object object)
 	t_vec		po;
 	t_vec		vec;
 
+	cylinder = (t_cylinder *)object.shape;
 	po =  vec_sub((t_vec)calc_point(ray, t), (t_vec)cylinder->center);
 	vec = vec_cross(po, cylinder->norm);
-	norm = vec_norm(vec_cross(vec, cylinder->norm));
-	//printf("|%lf, %lf, %lf|\n", norm.x, norm.y, norm.z);
-	//printf("|%lf, %lf, %lf|\n", ray.direction.x, ray.direction.y, ray.direction.z);
-	//printf("|%lf, %lf, %lf|\n", po.x, po.y, po.z);
-	//printf("|%lf, %lf, %lf|\n", vec.x, vec.y, vec.z);
 	printf("|%lf, %lf, %lf|\n", cylinder->norm.x, cylinder->norm.y, cylinder->norm.z);
-	//if (vec_dot(ray.direction, norm) > 0)
-	//	return (vec_mul(norm, -1));
+	if (vec_dot(ray.direction, norm) > 0)
+		return (vec_mul(norm, -1));
 	return (norm);
 }
 
