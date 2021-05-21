@@ -39,8 +39,8 @@ double	solve_equation_square(t_object *object, t_ray ray)
 	p = vec_sub((t_vec)calc_point(ray, var[2]), (t_vec)square->center);
 	var[0] = vec_dot(base.i, p);
 	var[1] = vec_dot(base.j, p);
-	if ((var[0] <= (square->size / 2)) && (var[0] >= (-square->size / 2)) &&
-			(var[1] <= (square->size / 2)) && (var[1] >= (-square->size / 2)))
+	if ((var[0] <= (square->size / 2)) && (var[0] >= (-square->size / 2))
+		&& (var[1] <= (square->size / 2)) && (var[1] >= (-square->size / 2)))
 		return (var[2]);
 	return (-1);
 }
@@ -56,9 +56,9 @@ double	solve_equation_triangle(t_object *object, t_ray ray)
 	double		determinant;
 
 	triangle = (t_triangle *)object->shape;
-	// dot = vec_dot(ray.direction,triangle->norm);
-	// if (dot == 0)
-	// 	return (-1);
+	dot = vec_dot(ray.direction,triangle->norm);
+	if (dot == 0)
+		return (-1);
 	determinant = vec_dot(vec_cross(ray.direction, triangle->edge_ft), triangle->edge_fs);
 	if (determinant == 0)
 		return (-1);

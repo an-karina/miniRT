@@ -13,15 +13,15 @@ CC			= gcc -g -O2
 RM			= rm -f
 CFLAGS		= -I includes/ -I mlx/
 LIBS		= -L . -lmlx libft.a
-#MLX			= libmlx.a
+MLX			= libmlx.a
 NAME		= miniRT
 LIBFT		= libft.a
 
 all:		$(NAME)
 
-$(NAME):	$(LIBFT) $(OBJS) $(INCS)
+$(NAME):	$(LIBFT)  $(MLX) $(OBJS) $(INCS)
 				@cp libft/$(LIBFT) .
-#				@cp mlx/$(MLX) .
+				@cp mlx/$(MLX) .
 				gcc -g -framework AppKit -framework OpenGL libmlx.a  ${CFLAGS}  ${OBJS} ${LIBS} -o miniRT
 				@echo "Done"
 
