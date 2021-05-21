@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:37:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/15 12:53:53 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 12:46:20 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	camera_base(t_camera *camera, t_wind window)
 {
 	t_vec		z;
 
-	camera->base = (t_matrix){fill_vector(0,0,0), fill_vector(0,0,0), fill_vector(0,0,0)};
+	camera->base = (t_matrix){fill_vector(0, 0, 0), fill_vector(0, 0, 0),
+		fill_vector(0, 0, 0)};
 	camera->distance = (window.width / 2) * (tan(camera->fov / 2));
 	z = fill_vector(0, 0, 1);
 	if (is_null_vec(vec_cross(camera->view, z)))

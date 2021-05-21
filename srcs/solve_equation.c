@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:59:39 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 09:17:35 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 13:49:54 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,31 @@
 
 double	solve_equation_square(t_object *object, t_ray ray)
 {
-	double		t;
 	t_square	*square;
 	t_matrix	base;
 	t_vec		p;
-	double		dot[2];
+	double		var[3];
 	t_vec		z;
 
 	square = (t_square *)(object->shape);
-	t = vec_dot(vec_sub((t_vec)((square)->center), (t_vec)ray.point), (square)->norm);
+	var[2] = vec_dot(vec_sub((t_vec)((square)->center),
+				(t_vec)ray.point), (square)->norm);
 	if (vec_dot(ray.direction, square->norm) != 0.0)
-		t = t / (vec_dot(ray.direction, (square)->norm));
+		var[2] = var[2] / (vec_dot(ray.direction, (square)->norm));
 	else
 		return (-1);
 	z = fill_vector(0,0,1);
-	
 	if (is_null_vec(vec_cross(z, square->norm)))
 		z = fill_vector(0, 1, 0);
 	base.k = square->norm;
 	base.i = vec_norm(vec_cross(z, base.k));
 	base.j = vec_cross(base.k, base.i);
-	p = vec_sub((t_vec)calc_point(ray, t), (t_vec)square->center);
-	dot[0] = vec_dot(base.i, p);
-	dot[1] = vec_dot(base.j, p);
-	if ((dot[0] <= (square->size / 2)) && (dot[0] >= (-square->size / 2)) &&
-			(dot[1] <= (square->size / 2)) && (dot[1] >= (-square->size / 2)))
-		return (t);
+	p = vec_sub((t_vec)calc_point(ray, var[2]), (t_vec)square->center);
+	var[0] = vec_dot(base.i, p);
+	var[1] = vec_dot(base.j, p);
+	if ((var[0] <= (square->size / 2)) && (var[0] >= (-square->size / 2)) &&
+			(var[1] <= (square->size / 2)) && (var[1] >= (-square->size / 2)))
+		return (var[2]);
 	return (-1);
 }
 
@@ -57,26 +56,29 @@ double	solve_equation_triangle(t_object *object, t_ray ray)
 	double		determinant;
 
 	triangle = (t_triangle *)object->shape;
-	dot = vec_dot(ray.direction,triangle->norm);
-	if (dot == 0)
-		return (-1);
+	// dot = vec_dot(ray.direction,triangle->norm);
+	// if (dot == 0)
+	// 	return (-1);
 	determinant = vec_dot(vec_cross(ray.direction, triangle->edge_ft), triangle->edge_fs);
-	if (determinant <= 0)
+	if (determinant == 0)
 		return (-1);
 	vertice = vec_sub(ray.point, triangle->first_p);
 	t = vec_dot(vec_cross(vertice, triangle->edge_fs), triangle->edge_ft) / determinant;
 	alpha = vec_dot(vec_cross(ray.direction, triangle->edge_ft), vertice) / determinant;
 	betta = vec_dot(vec_cross(vertice, triangle->edge_fs), ray.direction) / determinant;
-	if (alpha > 1 || betta > 1 || alpha + betta > 1
-		|| alpha < 0 || betta < 0 || alpha + betta < 0 || t < 0)
-		return (-1);
-	return (t);
+	if (t >= EPS && alpha >= 0 && betta >= 0 && alpha + betta <= 1)
+		return (t);
+	return  (-1);
 }
 
 double	give_nearest_t(double t_1, double t_2)
 {
 	if ((t_1 > EPS) && (t_2 > EPS))
-		return ((t_1 > t_2) ? t_2 : t_1);
+	{
+		if (t_1 > t_2)
+			return (t_2);
+		return (t_1);
+	}
 	else if (t_1 > EPS)
 		return (t_1);
 	else if (t_2 > EPS)

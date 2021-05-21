@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 08:44:42 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 09:48:59 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 12:43:42 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_side(t_triangle *triangle, char **str)
 	return (0);
 }
 
-int		get_object_triangle(t_object *object, char **str, t_triangle *triangle)
+int	get_object_triangle(t_object *object, char **str, t_triangle *triangle)
 {
 	object->color.existance = EXISTS;
 	object->color = get_color(str);
@@ -61,10 +61,8 @@ void	get_norm(t_triangle *triangle)
 	side1 = vec_sub(triangle->second_p, triangle->first_p);
 	side2 = vec_sub(triangle->third_p, triangle->first_p);
 	triangle->norm = vec_cross(side2, side1);
-	triangle->norm =  vec_norm(triangle->norm);
+	triangle->norm = vec_norm(triangle->norm);
 }
-
-//check_exictance_tr();
 
 void	parse_triangle(t_scene *scene, char *str)
 {
@@ -83,8 +81,6 @@ void	parse_triangle(t_scene *scene, char *str)
 	get_norm(triangle);
 	triangle->edge_fs = vec_sub(triangle->second_p, triangle->first_p);
 	triangle->edge_ft = vec_sub(triangle->third_p, triangle->first_p);
-	//triangle->edge_st = vec_sub(triangle->third_p, triangle->second_p);
-	//check_exictance_tr();
 	object = (t_object *)malloc(sizeof(t_object));
 	if (object == NULL)
 		return (fill_scene_null(scene));
