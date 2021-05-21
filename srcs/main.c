@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 15:28:21 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 20:35:04 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	main(int argc, char **argv)
 		}
 		y++;
 	}
-	if (argc == 3 && is_screen(argv[2], "--save"))
+	if (argc == 3 && !is_screen(argv[2], "--save"))
 		bmp_file(img, scene);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
