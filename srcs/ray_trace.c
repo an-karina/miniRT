@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/19 15:01:15 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 09:53:44 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ double	solve_equation_sphere(t_object *object, t_ray ray)
 		return (-1);
 	roots.t_1 = (-coeff.b + sqrt(disc)) / (2 * coeff.a);
 	roots.t_2 = (-coeff.b - sqrt(disc)) / (2 * coeff.a);
-	if (roots.t_2 >= 0 && roots.t_1 > 0 && roots.t_2 < roots.t_1)
-		roots.t_1 = roots.t_2;
+	// if (roots.t_2 >= 0 && roots.t_1 > 0 && roots.t_2 < roots.t_1)
+		roots.t_1 = give_nearest_t(roots.t_1, roots.t_2);
 	return (roots.t_1);
 }
 

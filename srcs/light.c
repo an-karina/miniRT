@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:20:50 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 20:06:35 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 09:48:38 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ t_color	lightnig(double t, t_ray ray, t_object *obj, t_scene scene)
 	{
 		light_intes = (t_vec){0, 0, 0};
 		light = (t_light *)((scene.light)->content);
-		// if (!shadow(point, light->center, scene))
-		// {
+		if (!shadow(point, light->center, scene))
+		{
 			light_intes = lightcolor(light, point, ((*obj).norm)(t, ray, *obj));
 			sum_of_lights = vec_add(sum_of_lights, light_intes);
-		// }
+		}
 		scene.light = (scene.light)->next;
 	}
 	color = mul_intens_color(scene.amb.color, scene.amb.intensity);

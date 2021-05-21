@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 08:44:42 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/18 14:37:25 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 09:48:59 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	get_norm(t_triangle *triangle)
 	triangle->norm =  vec_norm(triangle->norm);
 }
 
+//check_exictance_tr();
+
 void	parse_triangle(t_scene *scene, char *str)
 {
 	t_object	*object;
@@ -81,6 +83,8 @@ void	parse_triangle(t_scene *scene, char *str)
 	get_norm(triangle);
 	triangle->edge_fs = vec_sub(triangle->second_p, triangle->first_p);
 	triangle->edge_ft = vec_sub(triangle->third_p, triangle->first_p);
+	//triangle->edge_st = vec_sub(triangle->third_p, triangle->second_p);
+	//check_exictance_tr();
 	object = (t_object *)malloc(sizeof(t_object));
 	if (object == NULL)
 		return (fill_scene_null(scene));

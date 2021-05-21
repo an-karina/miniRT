@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:59:39 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 19:21:03 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/21 09:17:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,36 +118,3 @@ double			solve_equation_cylinder(t_object *object, t_ray ray)
 		roots.t_1 = give_nearest_t(roots.t_1, roots.t_2);
 	return (roots.t_1);
 }
-
-// double			solve_equation_cylinder(t_object *object, t_ray ray)
-// {
-// 	t_cylinder	*cylinder;
-// 	t_vec		d;
-// 	t_vec		a;
-// 	t_vec		co;
-// 	t_vec		point_on_cy_1;
-// 	t_vec		point_on_cy_2;
-// 	t_coeff		coeff;
-// 	t_roots		roots;
-// 	double		disc;
-// 	double		h;
-
-// 	cylinder = (t_cylinder *)object->shape;
-// 	a = cylinder->norm;
-// 	d = ray.direction;
-// 	co = vec_sub(ray.direction, cylinder->center);
-// 	coeff.a = vec_dot(d,d) - pow(vec_dot(a, d), 2);
-// 	coeff.b = 2 * (vec_dot(co, d) - vec_dot(a, co) * vec_dot(a, d));
-// 	coeff.c = vec_dot(co,co) - pow(vec_dot(a, co), 2) - pow(cylinder->d / 2 , 2);
-// 	disc = discriminant(coeff.a, coeff.b, coeff.c);
-// 	if (disc < 0)
-// 		return (-1);
-// 	roots.t_1 = (-coeff.b + sqrt(disc)) / (2 * coeff.a);
-// 	roots.t_2 = (-coeff.b - sqrt(disc)) / (2 * coeff.a);
-// 	point_on_cy_1 = vec_sub(calc_point(ray, roots.t_1), cylinder->center);
-// 	point_on_cy_2 = vec_sub(calc_point(ray, roots.t_2), cylinder->center);
-// 	h = vec_dot(point_on_cy_1, a);
-// 	if (roots.t_2 >= 0 && roots.t_1 > 0 && roots.t_2 < roots.t_1)
-// 		roots.t_1 = roots.t_2;
-// 	return (roots.t_1);
-// }
