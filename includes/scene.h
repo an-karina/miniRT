@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/10 13:36:33 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/22 20:12:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct s_scene
 	enum e_exist	existance;
 }				t_scene;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_scene	*scene;
+	int		current_cam;
+}				t_mlx;
+
 t_ray			get_ray(int x, int y, t_camera camera, t_wind winndow);
 t_color			ray_trace(t_ray ray, t_scene scene);
 t_color			lightnig(double t, t_ray ray, t_object *obj_max, t_scene scene);
@@ -35,5 +43,6 @@ t_vec			normal_sphere(double t, t_ray ray, t_object object);
 t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			intensity(t_color color, double intensity);
 t_point			calc_point(t_ray ray, double t);
+void			bmp_file(t_data img, t_scene *scene);
 
 #endif
