@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 12:50:04 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 00:27:51 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_color	ray_trace(t_ray ray, t_scene scene)
 	{
 		object = (t_object *)(scene.objects)->content;
 		t = (object->intersection)(object, ray);
-		if ((t > 0) && (t <= t_closest))
+		if ((t > EPS) && (t <= t_closest))
 		{
 			t_closest = t;
 			obj_closest = object;
