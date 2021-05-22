@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/22 20:12:35 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/22 22:15:03 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
+	t_list	*first_camera;
 	t_scene	*scene;
+	t_data	img;
 	int		current_cam;
 }				t_mlx;
 

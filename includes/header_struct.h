@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/22 20:08:04 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/22 22:17:00 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ typedef struct s_data {
 	int			line_length;
 	int			endian;
 }				t_data;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

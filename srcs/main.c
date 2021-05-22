@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:23:51 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/22 20:11:18 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/22 22:59:35 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 {
 	//t_scene		*scene;
 	t_mlx		mlx;
-	t_data		img;
+	//t_data		img;
 	t_color 	color;
 	int			x;
 	int			y;
@@ -96,6 +96,8 @@ int	main(int argc, char **argv)
 	(mlx.scene)->light = NULL;
 	(mlx.scene)->objects = NULL;
 	parser(argv[1], mlx.scene);
+	mlx.first_camera = (mlx.scene)->cameras;
+	mlx.current_cam = 1;
 	if (check_map_correct(mlx.scene))
 		fill_scene_null(mlx.scene);
 	if ((mlx.scene)->existance == DOES_NOT_EXIST)
@@ -107,9 +109,9 @@ int	main(int argc, char **argv)
 	
 	mlx.mlx = mlx_init();
 	mlx.mlx_win = mlx_new_window(mlx.mlx, (mlx.scene)->resolution.width, (mlx.scene)->resolution.height, "Karina's mini ray tracer");
-    img.img = mlx_new_image(mlx.mlx,  (mlx.scene)->resolution.width,  (mlx.scene)->resolution.height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
+    mlx.img.img = mlx_new_image(mlx.mlx,  (mlx.scene)->resolution.width,  (mlx.scene)->resolution.height);
+	mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel, &mlx.img.line_length,
+								&mlx.img.endian);
 	x = 0;
 	y = 0;
 	
@@ -120,18 +122,19 @@ int	main(int argc, char **argv)
 		while (x <  (mlx.scene)->resolution.width)
 		{
 			color = ray_trace(get_ray(x, y, *((t_camera *)(mlx.scene)->cameras->content), (mlx.scene)->resolution), *(mlx.scene));
-			my_mlx_pixel_put(&img, x, y, rgb_to_int(color));
+			my_mlx_pixel_put(&mlx.img, x, y, rgb_to_int(color));
 			x++;
 		}
 		y++;
 	}
 	if (argc == 3 && !is_screen(argv[2], "--save"))
 	{
-		bmp_file(img, (mlx.scene));
+		bmp_file(mlx.img, (mlx.scene));
 		return (0);
 	}
-	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
+	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img.img, 0, 0);
 	my_mlx_key_hook(mlx);
 	mlx_loop(mlx.mlx);
+	//fill_scene_null(mlx.scene);
 	return (0);
 }
