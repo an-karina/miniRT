@@ -13,7 +13,7 @@
 #include "header_fill.h"
 #include "light.h"
 #include "solve_equation.h"
-#include "../libft/libft.h"	
+#include "../libft/libft.h"
 #include "../mlx/mlx.h"
 #include <stdio.h>
 #include "parser.h"
@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img.img, 0, 0);
-	my_mlx_key_hook(mlx);
+	my_mlx_key_hook(&mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
