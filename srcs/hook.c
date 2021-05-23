@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 19:59:14 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 00:39:30 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 11:28:59 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 	if (keycode == 48)
 	{
 		count = ft_lstsize(mlx->scene->cameras);
-		if (mlx->current_cam < count)
+		if (mlx->current_cam <= count)
 		{
 			mlx->current_cam++;
 			mlx->scene->cameras = mlx->scene->cameras->next;
