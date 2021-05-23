@@ -36,21 +36,19 @@ int	key_hook(int keycode, t_mlx *mlx)
 	t_color	color;
 	int x;
 	int y;
-	
+
 	if (keycode == 48)
 	{
-		count = ft_lstsize(mlx->scene->cameras);
+		count = ft_lstsize(mlx->first_camera);
 		if (mlx->current_cam <= count)
 		{
 			mlx->current_cam++;
 			mlx->scene->cameras = mlx->scene->cameras->next;
-			printf("%d\n", mlx->current_cam);
 		}
 		else
 		{
 			mlx->scene->cameras = mlx->first_camera;
 			mlx->current_cam = 1;
-			printf("%d\n", mlx->current_cam);
 		}
 		x = 0;
 		y = 0;
@@ -61,8 +59,8 @@ int	key_hook(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-void	my_mlx_key_hook(t_mlx mlx)
+void	my_mlx_key_hook(t_mlx *mlx)
 {
-	mlx_key_hook(mlx.mlx_win, key_hook,&mlx);
-	mlx_hook(mlx.mlx_win, 17, 0, my_exit, &mlx);
+	mlx_key_hook(mlx->mlx_win, key_hook,mlx);
+	mlx_hook(mlx->mlx_win, 17, 0, my_exit, mlx);
 }

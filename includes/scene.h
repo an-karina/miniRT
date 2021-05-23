@@ -47,7 +47,7 @@ t_vec			intensity(t_color color, double intensity);
 t_point			calc_point(t_ray ray, double t);
 void			bmp_file(t_data img, t_scene *scene);
 int				key_hook(int keycode, t_mlx *mlx);
-void			my_mlx_key_hook(t_mlx mlx);
+void			my_mlx_key_hook(t_mlx *mlx);
 void			draw_scene(t_mlx *mlx);
 
 #endif
