@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:59:39 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 13:49:54 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 09:25:29 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,58 +17,55 @@
 
 double	solve_equation_square(t_object *object, t_ray ray)
 {
-	t_square	*square;
+	t_square	*sq;
 	t_matrix	base;
 	t_vec		p;
 	double		var[3];
 	t_vec		z;
 
-	square = (t_square *)(object->shape);
-	var[2] = vec_dot(vec_sub((t_vec)((square)->center),
-				(t_vec)ray.point), (square)->norm);
-	if (vec_dot(ray.direction, square->norm) != 0.0)
-		var[2] = var[2] / (vec_dot(ray.direction, (square)->norm));
-	else
+	sq = (t_square *)(object->shape);
+	var[2] = vec_dot(vec_sub((t_vec)((sq)->center),
+				(t_vec)ray.point), (sq)->norm);
+	if (vec_dot(ray.dir, sq->norm) == 0.0)
 		return (-1);
-	z = fill_vector(0,0,1);
-	if (is_null_vec(vec_cross(z, square->norm)))
+	var[2] = var[2] / (vec_dot(ray.dir, (sq)->norm));
+	z = fill_vector(0, 0, 1);
+	if (is_null_vec(vec_cross(z, sq->norm)))
 		z = fill_vector(0, 1, 0);
-	base.k = square->norm;
+	base.k = sq->norm;
 	base.i = vec_norm(vec_cross(z, base.k));
 	base.j = vec_cross(base.k, base.i);
-	p = vec_sub((t_vec)calc_point(ray, var[2]), (t_vec)square->center);
+	p = vec_sub((t_vec)calc_point(ray, var[2]), (t_vec)sq->center);
 	var[0] = vec_dot(base.i, p);
 	var[1] = vec_dot(base.j, p);
-	if ((var[0] <= (square->size / 2)) && (var[0] >= (-square->size / 2))
-		&& (var[1] <= (square->size / 2)) && (var[1] >= (-square->size / 2)))
+	if ((var[0] <= (sq->size / 2)) && (var[0] >= (-sq->size / 2))
+		&& (var[1] <= (sq->size / 2)) && (var[1] >= (-sq->size / 2)))
 		return (var[2]);
 	return (-1);
 }
 
 double	solve_equation_triangle(t_object *object, t_ray ray)
 {
-	double		dot;
 	t_triangle	*triangle;
-	t_vec		vertice;
+	t_vec		vec;
 	double		t;
-	double		alpha;
-	double		betta;
-	double		determinant;
+	t_coeff		coeff;
+	double		d[2];
 
 	triangle = (t_triangle *)object->shape;
-	dot = vec_dot(ray.direction,triangle->norm);
-	if (dot == 0)
+	d[0] = vec_dot(ray.dir, triangle->norm);
+	if (d[0] == 0)
 		return (-1);
-	determinant = vec_dot(vec_cross(ray.direction, triangle->edge_ft), triangle->edge_fs);
-	if (determinant == 0)
+	d[1] = vec_dot(vec_cross(ray.dir, triangle->edge_ft), triangle->edge_fs);
+	if (d[1] == 0)
 		return (-1);
-	vertice = vec_sub(ray.point, triangle->first_p);
-	t = vec_dot(vec_cross(vertice, triangle->edge_fs), triangle->edge_ft) / determinant;
-	alpha = vec_dot(vec_cross(ray.direction, triangle->edge_ft), vertice) / determinant;
-	betta = vec_dot(vec_cross(vertice, triangle->edge_fs), ray.direction) / determinant;
-	if (t >= EPS && alpha >= 0 && betta >= 0 && alpha + betta <= 1)
+	vec = vec_sub(ray.point, triangle->first_p);
+	t = vec_dot(vec_cross(vec, triangle->edge_fs), triangle->edge_ft) / d[1];
+	coeff.a = vec_dot(vec_cross(ray.dir, triangle->edge_ft), vec) / d[1];
+	coeff.b = vec_dot(vec_cross(vec, triangle->edge_fs), ray.dir) / d[1];
+	if (t >= EPS && coeff.a >= 0 && coeff.b >= 0 && coeff.a + coeff.b <= 1)
 		return (t);
-	return  (-1);
+	return (-1);
 }
 
 double	give_nearest_t(double t_1, double t_2)
@@ -86,37 +83,49 @@ double	give_nearest_t(double t_1, double t_2)
 	return (-1);
 }
 
-double			solve_equation_cylinder(t_object *object, t_ray ray)
+t_roots	find_root(t_ray ray, t_cylinder *cylinder, t_vec co)
 {
-	t_coeff		coeff;
+	t_coeff	coeff;
+	t_roots	roots;
+	double	disc;
+	
+	roots.exist = EXISTS;
+	coeff.a = vec_dot(ray.dir, ray.dir)
+		- vec_dot(cylinder->norm, ray.dir) * vec_dot(cylinder->norm, ray.dir);
+	coeff.b = 2 * (vec_dot(co, ray.dir) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, ray.dir));
+	coeff.c = vec_dot(co, co) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, co) - (cylinder->d * cylinder->d / 4);
+	disc = discriminant(coeff.a, coeff.b, coeff.c);
+	if (disc < 0)
+	{
+		roots.exist = DOES_NOT_EXIST;
+		return (roots);
+	}
+	roots.t_1 = (-coeff.b + sqrt(disc)) / (2 * coeff.a);
+	roots.t_2 = (-coeff.b - sqrt(disc)) / (2 * coeff.a);
+	return (roots);
+}
+
+double	solve_equation_cylinder(t_object *object, t_ray ray)
+{
 	t_roots		roots;
 	t_vec		co;
-	t_vec		intersect_1;
-	t_vec		intersect_2;
+	t_vec		intersect[2];
 	t_cylinder	*cylinder;
-	double		disc;
 	double		h;
 
 	cylinder = (t_cylinder *)object->shape;
 	co = vec_sub((t_vec)ray.point, (t_vec)cylinder->center);
-	coeff.a = vec_dot(ray.direction, ray.direction) - 
-				vec_dot(cylinder->norm, ray.direction) * vec_dot(cylinder->norm, ray.direction);
-	coeff.b = 2 * (vec_dot(co, ray.direction) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, ray.direction));
-	coeff.c = vec_dot(co,co) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, co) - (cylinder->d * cylinder->d / 4);
-	disc = discriminant(coeff.a, coeff.b, coeff.c);
-	if (disc < 0)
+	roots = find_root(ray, cylinder, co);
+	if (roots.exist != EXISTS)
 		return (-1);
-	roots.t_1 = (-coeff.b + sqrt(disc)) / (2 * coeff.a);
-	roots.t_2 = (-coeff.b - sqrt(disc)) / (2 * coeff.a);
-	intersect_1 = vec_sub(calc_point(ray, roots.t_1), cylinder->center);
-	intersect_2 = vec_sub(calc_point(ray, roots.t_2), cylinder->center);
-	h = vec_dot(intersect_1, cylinder->norm);
+	intersect[0] = vec_sub(calc_point(ray, roots.t_1), cylinder->center);
+	intersect[1] = vec_sub(calc_point(ray, roots.t_2), cylinder->center);
+	h = vec_dot(intersect[0], cylinder->norm);
 	if (h > cylinder->height / 2 || h < -cylinder->height / 2)
 		roots.t_1 = -1;
-	h = vec_dot(intersect_2, cylinder->norm);
+	h = vec_dot(intersect[1], cylinder->norm);
 	if (h > cylinder->height / 2 || h < -cylinder->height / 2)
 		roots.t_2 = -1;
-	// if (roots.t_2 >= r && roots.t_1 > 0 && roots.t_2 < roots.t_1)
-		roots.t_1 = give_nearest_t(roots.t_1, roots.t_2);
+	roots.t_1 = give_nearest_t(roots.t_1, roots.t_2);
 	return (roots.t_1);
 }

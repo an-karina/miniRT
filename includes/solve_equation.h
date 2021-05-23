@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:07:28 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 09:53:32 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 09:00:39 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ typedef struct s_coeff
 
 typedef struct s_roots
 {
-	double		t_1;
-	double		t_2;
+	double			t_1;
+	double			t_2;
+	enum e_exist	exist;
 }				t_roots;
 
 double			discriminant(double a, double b, double c);

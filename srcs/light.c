@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:20:50 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 10:53:31 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 01:26:05 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_point	calc_point(t_ray ray, double t)
 {
 	t_point		point;
 
-	point = (t_point)vec_mul(ray.direction, t);
+	point = (t_point)vec_mul(ray.dir, t);
 	point = (t_point)vec_add((t_vec)ray.point, (t_vec)point);
 	return (point);
 }
@@ -44,9 +44,9 @@ int	shadow(t_vec point, t_point light_center, t_scene scene)
 	double		t;
 	double		t_closest;
 
-	ray.direction = vec_sub((t_vec)light_center, point);
-	t_closest = vec_lenght(ray.direction);
-	ray.direction = vec_norm(ray.direction);
+	ray.dir = vec_sub((t_vec)light_center, point);
+	t_closest = vec_lenght(ray.dir);
+	ray.dir = vec_norm(ray.dir);
 	ray.point = point;
 	while (scene.objects != NULL)
 	{

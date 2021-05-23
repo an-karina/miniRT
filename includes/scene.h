@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:48:05 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/22 22:15:03 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 00:39:51 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ t_vec			normal_plane(double t, t_ray ray, t_object object);
 t_vec			intensity(t_color color, double intensity);
 t_point			calc_point(t_ray ray, double t);
 void			bmp_file(t_data img, t_scene *scene);
+int				key_hook(int keycode, t_mlx *mlx);
+void			my_mlx_key_hook(t_mlx mlx);
+void			draw_scene(t_mlx *mlx);
 
 #endif

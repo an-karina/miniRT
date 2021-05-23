@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:47:49 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 00:27:51 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 01:26:05 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ double	solve_equation_sphere(t_object *object, t_ray ray)
 	t_sphere	*sphere;
 
 	sphere = (t_sphere *)(object->shape);
-	coeff.a = vec_dot(ray.direction, ray.direction);
+	coeff.a = vec_dot(ray.dir, ray.dir);
 	vec_oc = vec_sub((t_vec)(ray.point), (t_vec)(sphere->center));
-	coeff.b = 2 * vec_dot(ray.direction, vec_oc);
+	coeff.b = 2 * vec_dot(ray.dir, vec_oc);
 	coeff.c = vec_dot(vec_oc, vec_oc) - (sphere->r * sphere->r);
 	disc = discriminant(coeff.a, coeff.b, coeff.c);
 	if (disc < 0)
@@ -48,8 +48,8 @@ double	solve_equation_plane(t_object *object, t_ray ray)
 
 	plane = (t_plane *)(object->shape);
 	t = vec_dot(vec_sub((t_vec)((plane)->p), (t_vec)ray.point), (plane)->norm);
-	if (vec_dot(ray.direction, (plane)->norm) != 0)
-		t = t / (vec_dot(ray.direction, (plane)->norm));
+	if (vec_dot(ray.dir, (plane)->norm) != 0)
+		t = t / (vec_dot(ray.dir, (plane)->norm));
 	else
 		return (-1);
 	return (t);

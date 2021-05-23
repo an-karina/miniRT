@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/11 11:17:36 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 01:07:51 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,10 @@ t_vec	get_cordinates(char **str);
 t_color	get_color(char **str);
 int		check_color(t_color color);
 int		check_norm_vec(t_vec vec);
+int		check_name(char *str);
+int		check_map_correct(t_scene *scene);
+int		check_bmp(char *str, char *bmp);
+int		check_scene_existance(t_mlx	*mlx);
+int		check_input(int argc, char *argv[]);
 
 #endif

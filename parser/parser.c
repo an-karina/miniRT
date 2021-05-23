@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 12:41:41 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 00:35:16 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,20 @@ void	parser(char *file_name, t_scene *scene)
 	while (get_next_line(fd, &str) > 0)
 	{
 		if (*str == '#')
+		{
+			free(str);
 			continue ;
+		}
 		if (check_if_only_new_line(str))
 			continue ;
 		parse_id(scene, str);
 		if (scene->existance != EXISTS)
-			return ;
+			return (fill_scene_null(scene));
+		free(str);
 	}
 	parse_id(scene, str);
 	if (scene->existance != EXISTS)
-		return ;
+		return (fill_scene_null(scene));
+	free(str);
 	return ;
 }

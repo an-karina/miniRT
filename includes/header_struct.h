@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:39:48 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/22 22:17:00 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 01:26:23 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_color
 typedef struct s_ray
 {
 	t_point		point;
-	t_vec		direction;
+	t_vec		dir;
 }				t_ray;
 
 typedef struct s_data {
