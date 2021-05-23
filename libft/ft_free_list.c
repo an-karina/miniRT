@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 19:17:03 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/14 19:32:37 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 17:34:46 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_free_list(t_list **lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	while (*lst)
 	{
 		tmp = *lst;
-		*lst = (*lst)->next; 
+		*lst = (*lst)->next;
 		free(tmp->content);
 		free(tmp);
 	}

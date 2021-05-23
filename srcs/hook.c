@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 19:59:14 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 11:28:59 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 15:20:34 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 
-    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    *(unsigned int*)dst = color;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
 int	my_exit(t_mlx *mlx)
@@ -31,16 +31,15 @@ int	my_exit(t_mlx *mlx)
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
-	int count;
-	t_camera *camera;
-	t_color	color;
-	int x;
-	int y;
+	int			count;
+	t_color		color;
+	int			x;
+	int			y;
 
 	if (keycode == 48)
 	{
 		count = ft_lstsize(mlx->first_camera);
-		if (mlx->current_cam <= count)
+		if (mlx->current_cam < count)
 		{
 			mlx->current_cam++;
 			mlx->scene->cameras = mlx->scene->cameras->next;
@@ -52,7 +51,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 		}
 		x = 0;
 		y = 0;
-		camera = (t_camera *)mlx->scene->cameras->content;
 		draw_scene(mlx);
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->img.img, 0, 0);
@@ -61,6 +59,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 
 void	my_mlx_key_hook(t_mlx *mlx)
 {
-	mlx_key_hook(mlx->mlx_win, key_hook,mlx);
+	mlx_key_hook(mlx->mlx_win, key_hook, mlx);
 	mlx_hook(mlx->mlx_win, 17, 0, my_exit, mlx);
 }

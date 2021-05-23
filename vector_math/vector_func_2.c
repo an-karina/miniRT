@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_func_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 13:05:12 by jhleena           #+#    #+#             */
-/*   Updated: 2021/04/08 15:24:45 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 16:54:38 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec	vec_cross(t_vec u, t_vec v)
 {
-	t_vec sum;
+	t_vec	sum;
 
 	sum.x = u.y * v.z - u.z * v.y;
 	sum.y = u.z * v.x - u.x * v.z;

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 23:46:27 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 01:08:18 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 15:59:37 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	check_name(char *str)
 {
-	int length;
+	int	length;
 
 	length = ft_strlen(str);
 	return (ft_strncmp(str + length - 3, ".rt", 3));
@@ -62,7 +62,8 @@ int	check_scene_existance(t_mlx	*mlx)
 
 int	check_input(int argc, char *argv[])
 {
-	if (argc > 3 || argc < 2 || check_name(argv[1]) || (argc == 3 && check_screen(argv[2], "--save")))
+	if (argc > 3 || argc < 2 || check_name(argv[1])
+		|| (argc == 3 && check_screen(argv[2], "--save")))
 	{
 		write(2, "Error\n", 6);
 		return (0);

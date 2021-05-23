@@ -6,19 +6,11 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:19:07 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 00:35:16 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 16:52:51 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
-
-void	ft_is_space(char **str)
-{
-	while (**str == ' ' || (**str == '\t') || (**str == '\r')
-		|| (**str == '\v') || (**str == '\n') || (**str == '\f'))
-		(*str)++;
-}
 
 int	check_if_only_new_line(char *str)
 {
@@ -69,6 +61,18 @@ void	parse_id(t_scene *scene, char *str)
 	return ;
 }
 
+int	parse_line(t_scene *scene, char **str)
+{
+	parse_id(scene, *str);
+	if (scene->existance != EXISTS)
+	{
+		free(*str);
+		return (0);
+	}
+	free(*str);
+	return (1);
+}
+
 void	parser(char *file_name, t_scene *scene)
 {
 	int		fd;
@@ -86,15 +90,14 @@ void	parser(char *file_name, t_scene *scene)
 			continue ;
 		}
 		if (check_if_only_new_line(str))
+		{
+			free(str);
 			continue ;
-		parse_id(scene, str);
-		if (scene->existance != EXISTS)
+		}
+		if (!parse_line(scene, &str))
 			return (fill_scene_null(scene));
-		free(str);
 	}
-	parse_id(scene, str);
-	if (scene->existance != EXISTS)
+	if (!parse_line(scene, &str))
 		return (fill_scene_null(scene));
-	free(str);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 17:59:39 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 09:25:29 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 16:01:31 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ t_roots	find_root(t_ray ray, t_cylinder *cylinder, t_vec co)
 	t_coeff	coeff;
 	t_roots	roots;
 	double	disc;
-	
+
 	roots.exist = EXISTS;
 	coeff.a = vec_dot(ray.dir, ray.dir)
 		- vec_dot(cylinder->norm, ray.dir) * vec_dot(cylinder->norm, ray.dir);
-	coeff.b = 2 * (vec_dot(co, ray.dir) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, ray.dir));
-	coeff.c = vec_dot(co, co) - vec_dot(cylinder->norm, co) * vec_dot(cylinder->norm, co) - (cylinder->d * cylinder->d / 4);
+	coeff.b = 2 * (vec_dot(co, ray.dir) - vec_dot(cylinder->norm, co)
+			* vec_dot(cylinder->norm, ray.dir));
+	coeff.c = vec_dot(co, co) - vec_dot(cylinder->norm, co)
+		* vec_dot(cylinder->norm, co) - (cylinder->d * cylinder->d / 4);
 	disc = discriminant(coeff.a, coeff.b, coeff.c);
 	if (disc < 0)
 	{

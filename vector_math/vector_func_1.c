@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_func_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhleena <jhleena@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 13:50:53 by jhleena           #+#    #+#             */
-/*   Updated: 2021/03/25 16:28:40 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 16:54:20 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec	vec_add(t_vec u, t_vec v)
 {
-	t_vec sum;
+	t_vec	sum;
 
 	sum.x = u.x + v.x;
 	sum.y = u.y + v.y;
@@ -24,7 +24,7 @@ t_vec	vec_add(t_vec u, t_vec v)
 
 t_vec	vec_sub(t_vec u, t_vec v)
 {
-	t_vec sum;
+	t_vec	sum;
 
 	sum.x = u.x - v.x;
 	sum.y = u.y - v.y;
@@ -34,7 +34,7 @@ t_vec	vec_sub(t_vec u, t_vec v)
 
 t_vec	vec_mul(t_vec u, double t)
 {
-	t_vec sum;
+	t_vec	sum;
 
 	sum.x = u.x * t;
 	sum.y = u.y * t;
@@ -44,7 +44,7 @@ t_vec	vec_mul(t_vec u, double t)
 
 t_vec	vec_div(t_vec u, double t)
 {
-	t_vec sum;
+	t_vec	sum;
 
 	sum.x = u.x / t;
 	sum.y = u.y / t;

@@ -6,11 +6,18 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:21:23 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/20 15:43:37 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 16:51:06 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+void	ft_is_space(char **str)
+{
+	while (**str == ' ' || (**str == '\t') || (**str == '\r')
+		|| (**str == '\v') || (**str == '\n') || (**str == '\f'))
+		(*str)++;
+}
 
 int	correct_input(char *str)
 {

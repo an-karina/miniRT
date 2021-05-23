@@ -6,14 +6,14 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 16:40:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/21 12:37:34 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 18:24:36 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int		find_new_line(char **string, char **line, int count)
+int	find_new_line(char **string, char **line, int count)
 {
 	int		i;
 	char	*temporary;
@@ -26,7 +26,8 @@ int		find_new_line(char **string, char **line, int count)
 	if ((*string)[i] == '\0')
 	{
 		free(*line);
-		if (!(*line = ft_strdup(*string)))
+		*line = ft_strdup(*string);
+		if (!(*line))
 			return (-1);
 		free(*string);
 		*string = NULL;
@@ -34,7 +35,8 @@ int		find_new_line(char **string, char **line, int count)
 	}
 	(*string)[i++] = '\0';
 	free(*line);
-	if (!(*line = ft_strdup(*string)))
+	*line = ft_strdup(*string);
+	if (!(*line))
 		return (-1);
 	temporary = ft_strdup(*string + i);
 	free(*string);
@@ -42,17 +44,19 @@ int		find_new_line(char **string, char **line, int count)
 	return (1);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*fd_buffer;
 	char		*read_buffer;
-	int			count;
+	ssize_t		count;
 
-	if ((fd < 0) || (!line) || (BUFFER_SIZE < 1) ||
-		(read(fd, 0, 0) < 0) || !(read_buffer = malloc(BUFFER_SIZE + 1)))
+	read_buffer = malloc(BUFFER_SIZE + 1);
+	if ((fd < 0) || (!line) || (BUFFER_SIZE < 1)
+		|| (read(fd, 0, 0) < 0) || !(read_buffer))
 		return (-1);
 	*line = ft_calloc(1, 1);
-	while ((count = read(fd, read_buffer, BUFFER_SIZE)))
+	count = read(fd, read_buffer, BUFFER_SIZE);
+	while ((count))
 	{
 		if (count == -1)
 		{
@@ -60,11 +64,14 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		read_buffer[count] = '\0';
-		fd_buffer = (!fd_buffer) ? ft_calloc(1, 1) : fd_buffer;
-		if (!(fd_buffer = ft_strjoin_free(fd_buffer, read_buffer)))
+		if (!fd_buffer)
+			ft_calloc(1, 1);
+		fd_buffer = ft_strjoin_free(fd_buffer, read_buffer);
+		if (!(fd_buffer))
 			return (-1);
 		if ((ft_strchr(fd_buffer, '\n')))
 			break ;
+		count = read(fd, read_buffer, BUFFER_SIZE);
 	}
 	free(read_buffer);
 	return (find_new_line(&fd_buffer, line, count));
