@@ -6,12 +6,23 @@
 /*   By: jhleena <jhleena@student.42.f>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 16:40:52 by jhleena           #+#    #+#             */
-/*   Updated: 2021/05/23 18:24:36 by jhleena          ###   ########.fr       */
+/*   Updated: 2021/05/23 18:58:36 by jhleena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
+int	free_line(char **line, char **string)
+{
+	free(*line);
+	*line = ft_strdup(*string);
+	if (!(*line))
+		return (-1);
+	free(*string);
+	*string = NULL;
+	return (0);
+}
 
 int	find_new_line(char **string, char **line, int count)
 {
@@ -24,15 +35,7 @@ int	find_new_line(char **string, char **line, int count)
 	while ((*string)[i] != '\n' && (*string)[i] != '\0')
 		i++;
 	if ((*string)[i] == '\0')
-	{
-		free(*line);
-		*line = ft_strdup(*string);
-		if (!(*line))
-			return (-1);
-		free(*string);
-		*string = NULL;
-		return (0);
-	}
+		return (free_line(line, string));
 	(*string)[i++] = '\0';
 	free(*line);
 	*line = ft_strdup(*string);
@@ -42,6 +45,22 @@ int	find_new_line(char **string, char **line, int count)
 	free(*string);
 	*string = temporary;
 	return (1);
+}
+
+int	gnl_util(ssize_t count, char **read_buffer, char	**fd_buffer)
+{
+	if (count == -1)
+	{
+		free(*read_buffer);
+		return (-1);
+	}
+	(*read_buffer)[count] = '\0';
+	if (!(*fd_buffer))
+		(*fd_buffer) = ft_calloc(1, 1);
+	(*fd_buffer) = ft_strjoin_free(*fd_buffer, *read_buffer);
+	if (!(*fd_buffer))
+		return (-1);
+	return (0);
 }
 
 int	get_next_line(int fd, char **line)
@@ -58,16 +77,7 @@ int	get_next_line(int fd, char **line)
 	count = read(fd, read_buffer, BUFFER_SIZE);
 	while ((count))
 	{
-		if (count == -1)
-		{
-			free(read_buffer);
-			return (-1);
-		}
-		read_buffer[count] = '\0';
-		if (!fd_buffer)
-			ft_calloc(1, 1);
-		fd_buffer = ft_strjoin_free(fd_buffer, read_buffer);
-		if (!(fd_buffer))
+		if (gnl_util(count, &read_buffer, &fd_buffer) != 0)
 			return (-1);
 		if ((ft_strchr(fd_buffer, '\n')))
 			break ;
