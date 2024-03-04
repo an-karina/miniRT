@@ -1,6 +1,6 @@
 # miniRT
 
-***To run the programm enter**
+***To run the programm enter***
 
 **make**
 
