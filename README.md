@@ -1,3 +1,3 @@
 # miniRT
 
-![alt text](https://github.com/[an_karina]/[miniRT]/blob/figures.png?raw=true)
+![alt text](https://github.com/an-karina/miniRT/blob/main/figures.png)
