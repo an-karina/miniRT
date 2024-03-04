@@ -1,4 +1,7 @@
 # miniRT
+
+***To run the programm enter**
+
 **make**
 
 **./miniRT map.rt**
